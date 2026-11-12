@@ -22,7 +22,7 @@ const tripTypes = [
     id: "friends",
     title: "Friends Trip",
     description: "Explore Tenkasi together with friends.",
-    image: "/images/friends trip.jpg",
+    image: "public/images/friends trip.png",
   },
   {
     id: "office",
@@ -108,9 +108,9 @@ const budgetOptions = [
     amount: "₹10,000+",
     description: "A premium trip with upgraded comfort and services.",
     image: "/images/Luxury trip.jpg.png",
-    stayImage: "/images/luxury-stay.jpg",
-    foodImage: "/images/luxury-food.jpg",
-    transportImage: "/images/luxury-transport.jpg",
+    stayImage: "public/images/luxury-stay (1).jpg",
+    foodImage: "public/images/luxury-food(1).jpg",
+    transportImage: "public/images/luxury-transport (1).jpg",
     accent: "purple",
     stay: "Premium resort or luxury accommodation",
     food: "Premium dining and curated food experiences",
@@ -129,6 +129,9 @@ const budgetOptions = [
     note: "Best for travellers who prefer premium stays, private travel and extra comfort.",
   },
 ];
+
+// Add the tourism team WhatsApp number here (country code + number, digits only).
+const WHATSAPP_NUMBER = "919342638861";
 
 // ---------------- ANIMATION ----------------
 
@@ -166,6 +169,16 @@ export default function PlanYourTrip() {
   const [tripType, setTripType] = useState("");
   const [budget, setBudget] = useState("");
   const [budgetDetailsOpen, setBudgetDetailsOpen] = useState(false);
+  const [finalStepOpen, setFinalStepOpen] = useState(false);
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [enquirySubmitted, setEnquirySubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    travelDate: "",
+    persons: "2",
+    message: "",
+  });
 
   // Selected trip type details
   const selectedTripType = useMemo(
@@ -185,6 +198,24 @@ export default function PlanYourTrip() {
     setStep(1);
   };
 
+  // Open WhatsApp with the selected trip type details
+  const handleTripWhatsApp = (option) => {
+    const message = [
+      "Hello! I am interested in this Tenkasi trip.",
+      "",
+      `Trip Type: ${option.title}`,
+      `Description: ${option.description}`,
+      "",
+      "Please share the package details and itinerary."
+    ].join("\n");
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   // Select budget and show its details
   const handleBudgetSelect = (budgetId) => {
     setBudget(budgetId);
@@ -193,13 +224,69 @@ export default function PlanYourTrip() {
 
   // Go back to trip type
   const handlePrevious = () => {
+    if (enquiryOpen) {
+      setEnquiryOpen(false);
+      setEnquirySubmitted(false);
+      return;
+    }
+    if (finalStepOpen) {
+      setFinalStepOpen(false);
+      return;
+    }
     if (budgetDetailsOpen) {
       setBudgetDetailsOpen(false);
       return;
     }
-
     setStep(0);
     setBudget("");
+  };
+
+  const handleFormChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
+
+  const handleWhatsAppSend = () => {
+    if (!selectedTripType || !selectedBudget) return;
+    if (WHATSAPP_NUMBER.includes("X")) {
+      alert("Add the tourism team's WhatsApp number in WHATSAPP_NUMBER at the top of this file.");
+      return;
+    }
+    const message = [
+      "Hello! I am interested in a Tenkasi trip.",
+      "",
+      `Trip Type: ${selectedTripType.title}`,
+      `Budget: ${selectedBudget.title}`,
+      `Budget Range: ${selectedBudget.amount} per person`,
+      "",
+      "Please share more details about this package.",
+    ].join("\\n");
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  const handleEnquirySubmit = (event) => {
+    event.preventDefault();
+    const enquiry = {
+      ...formData,
+      tripType: selectedTripType?.title || "",
+      budget: selectedBudget?.title || "",
+      budgetRange: selectedBudget?.amount || "",
+      submittedAt: new Date().toISOString(),
+    };
+    // Front-end demo: saved in this browser only. Backend/email integration is needed
+    // before the tourism team can receive enquiries.
+    const saved = JSON.parse(
+      window.localStorage.getItem("tenkasiTripEnquiries") || "[]"
+    );
+    window.localStorage.setItem(
+      "tenkasiTripEnquiries",
+      JSON.stringify([...saved, enquiry])
+    );
+    setEnquirySubmitted(true);
   };
 
   // Change selected budget
@@ -294,49 +381,70 @@ export default function PlanYourTrip() {
                   <div className="mt-6 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
 
                     {tripTypes.map((option, index) => (
-                      <motion.button
+                      <motion.div
                         key={option.id}
-                        type="button"
-                        onClick={() => handleTripTypeSelect(option.id)}
                         whileHover={{ y: -5 }}
-                        whileTap={{ scale: 0.98 }}
                         initial={cardAnimation.initial}
                         animate={cardAnimation.animate}
                         transition={{ delay: index * 0.07 }}
-                        className={`overflow-hidden rounded-2xl border text-left transition ${
+                        className={`overflow-hidden rounded-2xl border transition ${
                           tripType === option.id
                             ? "border-green-700 bg-green-50 ring-2 ring-green-200"
-                            : "border-slate-200 hover:border-green-300 hover:shadow-lg"
+                            : "border-slate-200 bg-white hover:border-green-300 hover:shadow-lg"
                         }`}
                       >
-                        <div className="h-48 w-full overflow-hidden bg-green-50 sm:h-52">
+                        <button
+                          type="button"
+                          onClick={() => handleTripTypeSelect(option.id)}
+                          className="block w-full text-left"
+                        >
+                          <div className="h-48 w-full overflow-hidden bg-green-50 sm:h-52">
+                            <motion.img
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.3 }}
+                              src={option.image}
+                              alt={option.title}
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
 
-                          <motion.img
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ duration: 0.3 }}
-                            src={option.image}
-                            alt={option.title}
-                            className="h-full w-full object-cover"
-                          />
+                          <div className="px-4 pt-4">
+                            <h3 className="text-lg font-bold">{option.title}</h3>
+                            <p className="mt-1 text-sm text-slate-600">
+                              {option.description}
+                            </p>
+                          </div>
+                        </button>
 
-                        </div>
-
-                        <div className="p-4">
-
-                          <h3 className="text-lg font-bold">
-                            {option.title}
-                          </h3>
-
-                          <p className="mt-1 text-sm text-slate-600">
-                            {option.description}
-                          </p>
-
-                          <p className="mt-3 text-sm font-bold text-green-700">
+                        <div className="flex items-center justify-between gap-2 px-4 pb-4 pt-3">
+                          <button
+                            type="button"
+                            onClick={() => handleTripTypeSelect(option.id)}
+                            className="text-sm font-bold text-green-700 transition hover:text-green-900"
+                          >
                             Select Trip →
-                          </p>
+                          </button>
 
+                          <motion.button
+                            type="button"
+                            onClick={() => handleTripWhatsApp(option)}
+                            aria-label={`Ask about ${option.title} on WhatsApp`}
+                            title={`Ask about ${option.title} on WhatsApp`}
+                            animate={{ y: [0, -4, 0], scale: [1, 1.04, 1] }}
+                            transition={{
+                              y: { duration: 1.8, repeat: Infinity, ease: "easeInOut" },
+                              scale: { duration: 1.8, repeat: Infinity, ease: "easeInOut" },
+                            }}
+                            whileHover={{ scale: 1.12, y: -2 }}
+                            whileTap={{ scale: 0.92 }}
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md shadow-green-200 transition-colors hover:bg-[#1ebe5d] focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+                          >
+                            <svg viewBox="0 0 32 32" className="h-6 w-6" fill="currentColor" aria-hidden="true">
+                              <path d="M16.02 3.2A12.65 12.65 0 0 0 5.1 22.22L3.4 28.4l6.33-1.66A12.65 12.65 0 1 0 16.02 3.2Zm0 22.98c-1.94 0-3.84-.52-5.5-1.51l-.4-.24-3.76.99 1-3.66-.26-.42a10.27 10.27 0 1 1 8.92 4.84Zm5.64-7.7c-.31-.16-1.84-.91-2.13-1.01-.29-.1-.5-.16-.71.16-.21.31-.82 1.01-1 1.22-.18.21-.37.23-.68.08-.31-.16-1.3-.48-2.48-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.07-1.1 2.61s1.13 3.03 1.29 3.24c.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.65.76.24 1.45.21 2 .13.61-.09 1.84-.75 2.1-1.48.26-.73.26-1.35.18-1.48-.08-.13-.29-.21-.6-.37Z" />
+                            </svg>
+                          </motion.button>
                         </div>
-                      </motion.button>
+                      </motion.div>
                     ))}
 
                   </div>
@@ -347,7 +455,7 @@ export default function PlanYourTrip() {
                   STEP 2 — BUDGET
               ========================================== */}
 
-              {step === 1 && (
+              {step === 1 && !finalStepOpen && (
                 <>
 
                   {!budgetDetailsOpen ? (
@@ -610,6 +718,115 @@ export default function PlanYourTrip() {
 
           </AnimatePresence>
 
+
+          {finalStepOpen && (
+            <motion.section
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-2"
+            >
+              <div className="text-center">
+                <p className="font-bold uppercase tracking-[0.18em] text-green-700">Final Step</p>
+                <h2 className="mt-2 text-2xl font-extrabold sm:text-3xl">Your Trip Plan is Ready!</h2>
+                <p className="mx-auto mt-2 max-w-2xl text-slate-600">
+                  Review your selected trip and send your plan through WhatsApp or an enquiry form.
+                </p>
+              </div>
+
+              <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-green-100 bg-green-50/80 p-5 sm:p-7">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-2xl bg-white p-4 shadow-sm">
+                    <p className="text-sm font-semibold text-slate-500">Trip Type</p>
+                    <p className="mt-1 text-xl font-bold text-green-800">{selectedTripType?.title}</p>
+                  </div>
+                  <div className="rounded-2xl bg-white p-4 shadow-sm">
+                    <p className="text-sm font-semibold text-slate-500">Selected Budget</p>
+                    <p className="mt-1 text-xl font-bold text-green-800">{selectedBudget?.title}</p>
+                    <p className="text-sm text-slate-600">{selectedBudget?.amount} / person</p>
+                  </div>
+                </div>
+
+                {!enquiryOpen ? (
+                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                    <button type="button" onClick={handleWhatsAppSend}
+                      className="rounded-xl bg-green-700 px-5 py-4 font-bold text-white shadow-md transition hover:bg-green-800">
+                      Send to WhatsApp
+                    </button>
+                    <button type="button" onClick={() => { setEnquiryOpen(true); setEnquirySubmitted(false); }}
+                      className="rounded-xl border-2 border-green-700 bg-white px-5 py-4 font-bold text-green-800 transition hover:bg-green-50">
+                      Enquiry Form
+                    </button>
+                  </div>
+                ) : enquirySubmitted ? (
+                  <div className="mt-6 rounded-2xl bg-white p-6 text-center shadow-sm">
+                    <div className="text-3xl text-green-700">✓</div>
+                    <h3 className="mt-2 text-xl font-bold text-green-800">Enquiry saved in this browser!</h3>
+                    <p className="mt-2 text-sm text-slate-600">
+                      This is a front-end demo. Connect a backend or email service for the tourism team to receive enquiries.
+                    </p>
+                    <button type="button" onClick={() => { setEnquiryOpen(false); setEnquirySubmitted(false); }}
+                      className="mt-4 rounded-full bg-green-700 px-5 py-2.5 font-semibold text-white hover:bg-green-800">
+                      Back to send options
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleEnquirySubmit} className="mt-6 space-y-4 rounded-2xl bg-white p-5 shadow-sm">
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900">Trip Enquiry Form</h3>
+                      <p className="mt-1 text-sm text-slate-600">Share your details so the tourism team can follow up.</p>
+                    </div>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <label className="block text-sm font-semibold text-slate-700">
+                        Full Name *
+                        <input name="name" value={formData.name} onChange={handleFormChange} required
+                          placeholder="Enter your name"
+                          className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 font-normal outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100" />
+                      </label>
+                      <label className="block text-sm font-semibold text-slate-700">
+                        Mobile Number *
+                        <input type="tel" name="phone" value={formData.phone} onChange={handleFormChange}
+                          required pattern="[0-9+\\- ]{10,15}" title="Enter a valid phone number"
+                          placeholder="Enter mobile number"
+                          className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 font-normal outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100" />
+                      </label>
+                      <label className="block text-sm font-semibold text-slate-700">
+                        Travel Date *
+                        <input type="date" name="travelDate" value={formData.travelDate} onChange={handleFormChange}
+                          min={new Date().toISOString().split("T")[0]} required
+                          className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 font-normal outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100" />
+                      </label>
+                      <label className="block text-sm font-semibold text-slate-700">
+                        Number of Persons *
+                        <input type="number" name="persons" value={formData.persons} onChange={handleFormChange}
+                          min="1" max="100" required
+                          className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 font-normal outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100" />
+                      </label>
+                    </div>
+                    <label className="block text-sm font-semibold text-slate-700">
+                      Additional Message
+                      <textarea name="message" value={formData.message} onChange={handleFormChange} rows="3"
+                        placeholder="Any special requirements?"
+                        className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 font-normal outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100" />
+                    </label>
+                    <div className="flex flex-wrap gap-3">
+                      <button type="button" onClick={() => setEnquiryOpen(false)}
+                        className="rounded-full border border-slate-300 px-5 py-3 font-semibold text-slate-700 hover:bg-slate-50">
+                        Cancel
+                      </button>
+                      <button type="submit"
+                        className="rounded-full bg-green-700 px-6 py-3 font-bold text-white transition hover:bg-green-800">
+                        Submit Enquiry
+                      </button>
+                    </div>
+                    <p className="text-xs leading-5 text-slate-500">
+                      Demo: this form saves data in this browser only; it does not send it to the tourism team yet.
+                    </p>
+                  </form>
+                )}
+              </div>
+            </motion.section>
+          )}
+
           {/* ---------------- BOTTOM NAVIGATION ---------------- */}
 
           <div className="mt-8 flex justify-between gap-3 border-t border-slate-100 pt-5">
@@ -618,18 +835,27 @@ export default function PlanYourTrip() {
               type="button"
               onClick={handlePrevious}
               disabled={step === 0 && !budgetDetailsOpen}
-              className="rounded-full border border-slate-300 px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="rounded-full bg-green-700 px-5 py-3 font-semibold text-white shadow-sm transition hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-40"
             >
               ← Back
             </button>
 
-            {step === 1 && budgetDetailsOpen && (
-              <button
-                type="button"
-                onClick={handleChangeBudget}
-                className="rounded-full bg-green-700 px-6 py-3 font-semibold text-white transition hover:bg-green-800"
-              >
-                Change Budget
+            {step === 1 && budgetDetailsOpen && !finalStepOpen && (
+              <div className="flex flex-wrap justify-end gap-3">
+                <button type="button" onClick={handleChangeBudget}
+                  className="rounded-full border border-green-700 px-5 py-3 font-semibold text-green-800 transition hover:bg-green-50">
+                  Change Budget
+                </button>
+                <button type="button" onClick={() => setFinalStepOpen(true)}
+                  className="rounded-full bg-green-700 px-6 py-3 font-semibold text-white transition hover:bg-green-800">
+                  Continue to Send Plan →
+                </button>
+              </div>
+            )}
+            {step === 1 && finalStepOpen && !enquiryOpen && (
+              <button type="button" onClick={() => setFinalStepOpen(false)}
+                className="rounded-full border border-green-700 px-5 py-3 font-semibold text-green-800 transition hover:bg-green-50">
+                Back to Budget Details
               </button>
             )}
 
