@@ -8,13 +8,14 @@ import {
   Backpack,
   Briefcase,
   Utensils,
-  CalendarDays,
+  Phone,
   Menu,
   X
 } from "lucide-react";
 
 export default function Homenavbar() {
   const [isOpen, setIsOpen] = useState(false);
+
   const location = useLocation();
 
   // Every new page opens from the top
@@ -27,13 +28,13 @@ export default function Homenavbar() {
   }, [location.pathname]);
 
   const menuItems = [
-    { name: "Home", icon: <Home size={16} />, link: "/" },
-    { name: "About", icon: <Info size={16} />, link: "/about" },
-    { name: "Destination", icon: <MapPin size={16} />, link: "/destination" },
-    { name: "Package", icon: <Briefcase size={16} />, link: "/tour-packages" },
-    { name: "Taste Trails", icon: <Utensils size={16} />, link: "/taste-trails" },
-    { name: "Reviews", icon: <Backpack size={16} />, link: "/reviews" },
-    { name: "Contact", icon: <Backpack size={16} />, link: "/contact" },
+   { name: "Home", icon: <Home size={20} />, link: "/" },
+{ name: "About", icon: <Info size={20} />, link: "/about" },
+{ name: "Destination", icon: <MapPin size={20} />, link: "/destination" },
+{ name: "Package", icon: <Briefcase size={20} />, link: "/tour-packages" },
+{ name: "Taste Trails", icon: <Utensils size={20} />, link: "/taste-trails" },
+{ name: "Reviews", icon: <Backpack size={20} />, link: "/reviews" },
+{ name: "Contact", icon: <Phone size={20} />, link: "/contact" },
   ];
 
   return (
@@ -59,9 +60,9 @@ export default function Homenavbar() {
             <h1 className="text-sm sm:text-xl md:text-2xl font-extrabold text-slate-800">
               TourISM
             </h1>
-            <p className="text-[8px] sm:text-xs font-medium text-green-700">
-              Explore Tenkasi
-            </p>
+           <p className="text-sm font-medium text-green-700">
+  Explore Tenkasi
+</p>
           </div>
         </div>
 
@@ -78,7 +79,7 @@ export default function Homenavbar() {
                 to={item.link}
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center gap-1 px-1.5 sm:px-3 py-2
-                  rounded-full text-[9px] sm:text-sm font-semibold
+                  rounded-full text-sm font-semibold
                   transition duration-300 shrink-0
                   ${
                     isActive
@@ -91,17 +92,17 @@ export default function Homenavbar() {
               </Link>
             );
           })}
-
         </nav>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(true)}
-          className="md:hidden p-2 text-green-800 hover:bg-green-100 rounded-lg"
+          className="md:hidden min-w-11 min-h-11 flex items-center justify-center
+  text-green-800 hover:bg-green-100 rounded-lg"
+          aria-label="Open navigation menu"
         >
           <Menu size={28} />
         </button>
-
       </div>
 
       {/* Mobile Sidebar */}
@@ -117,7 +118,7 @@ export default function Homenavbar() {
           <div
             className="fixed top-0 right-0 h-screen w-72 max-w-[85%]
               bg-gradient-to-b from-white via-green-50 to-orange-50
-              shadow-2xl z-[60] md:hidden
+              shadow-2xl z-[10002] md:hidden
               transition-transform duration-300
               overflow-y-auto"
             style={{
@@ -141,15 +142,17 @@ export default function Homenavbar() {
                   <h2 className="text-lg font-extrabold text-slate-800">
                     TourISM
                   </h2>
-                  <p className="text-xs text-green-700">
-                    Explore Tenkasi
-                  </p>
+                 <p className="text-xs sm:text-sm font-medium text-green-700">
+  Explore Tenkasi
+</p>
                 </div>
               </div>
 
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-full hover:bg-green-100 text-green-800"
+                className="min-w-11 min-h-11 flex items-center justify-center
+  rounded-full hover:bg-green-100 text-green-800"
+                aria-label="Close navigation menu"
               >
                 <X size={25} />
               </button>
@@ -157,7 +160,6 @@ export default function Homenavbar() {
 
             {/* Sidebar Menu Items */}
             <nav className="flex flex-col gap-2 p-4">
-
               {menuItems.map((item, index) => {
                 const isActive = location.pathname === item.link;
 
@@ -179,13 +181,10 @@ export default function Homenavbar() {
                   </Link>
                 );
               })}
-
             </nav>
-
           </div>
         </>
       )}
-
     </header>
   );
 }

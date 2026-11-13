@@ -423,7 +423,7 @@ function ContactHeroSection({ title, subtitle, image }) {
                 translateY: mouseTextY,
               }
         }
-      >
+      >                            
         <motion.div
           initial={
             reduceMotion
@@ -433,7 +433,7 @@ function ContactHeroSection({ title, subtitle, image }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="inline-flex items-center gap-2 rounded-full border border-emerald-300/50 bg-emerald-950/50 px-6 py-3 shadow-xl backdrop-blur-lg"
-        >
+        >                    
           <Sparkles className="text-emerald-300" size={17} />
 
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-emerald-100">

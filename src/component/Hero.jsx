@@ -13,28 +13,35 @@ import {
   X,
   Send
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
 
   const reduceMotion = useReducedMotion();
 
   const images = [
+     {
+      name: "Tigerfall",
+      url: "/tiger.jpg"
+    },
+    {
+      name: " Main Waterfall",
+      url: "/Courtallam.jpg"
+    },
+   
     {
       name: "Waterfall",
-      url: "/waterfall.jpg"
+      url: "/fall2.jpg"
     },
     {
-      name: "Green Forest",
-      url: "/forest.jpg"
+      name: "old waterfall",
+      url: "/senba1.jpg"
     },
+    
     {
-      name: "Mountain Nature",
-      url: "/mountain.jpg"
+      name: "Hiddenfall",
+      url: "/senba.JPG"
     },
-    {
-      name: "Beautiful Lake",
-      url: "/lake.jpg"
-    }
   ];
 
   const [current, setCurrent] = useState(0);
@@ -48,11 +55,11 @@ export default function Hero() {
     }
   ]);
 
-  // Automatic image change every 5 seconds
+  // Automatic image change every 3 seconds
   useEffect(() => {
     const slider = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(slider);
   }, []);
@@ -112,7 +119,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative w-full h-[calc(100vh-80px)] min-h-[627px] flex items-center overflow-hidden"
+      className="relative w-full min-h-screen flex items-center overflow-hidden"
     >
 
       {/* Background Image Slider */}
@@ -134,7 +141,7 @@ export default function Hero() {
       {/* Hero Content with Animation */}
 
       <motion.div
-        className="relative z-10 px-8 md:px-20 py-20 max-w-4xl"
+        className="relative z-10 px-5 sm:px-8 md:px-20 pt-28 pb-44 md:py-24 max-w-4xl w-full"
         initial={reduceMotion ? false : "hidden"}
         animate="visible"
         variants={{
@@ -155,7 +162,7 @@ export default function Hero() {
             visible: { opacity: 1, y: 0 }
           }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 bg-green-100/90 text-green-800 px-5 py-2 rounded-full mb-6"
+          className="inline-flex items-center gap-2 bg-green-100/90 text-green-800 px-4 sm:px-5 py-2 rounded-full mb-6"
         >
 
           <MapPin size={18} />
@@ -185,7 +192,7 @@ export default function Hero() {
             duration: 1,
             ease: "easeOut"
           }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 font-serif italic"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 font-serif italic"
         >
 
           Discover the
@@ -202,7 +209,7 @@ export default function Hero() {
             visible: { opacity: 1, y: 0 }
           }}
           transition={{ duration: 0.9 }}
-          className="text-white text-base md:text-xl leading-relaxed max-w-2xl mb-8"
+          className="text-white text-sm sm:text-base md:text-xl leading-relaxed max-w-2xl mb-8"
         >
 
           Explore the breathtaking waterfalls, beautiful
@@ -219,24 +226,24 @@ export default function Hero() {
             visible: { opacity: 1, y: 0 }
           }}
           transition={{ duration: 0.9 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
         >
 
-          <a
-            href="/destination"
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-7 py-4 rounded-full font-semibold transition duration-300 shadow-lg hover:scale-105"
+          <Link
+            to="/destination"
+            className="min-h-[44px] flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-4 rounded-full font-semibold transition duration-300 shadow-lg hover:scale-105"
           >
             Explore Destinations
             <ArrowRight size={20} />
-          </a>
+          </Link>
 
-          <a
-            href="#about"
-            className="flex items-center gap-2 bg-white/90 hover:bg-white text-green-800 px-7 py-4 rounded-full font-semibold transition duration-300 hover:scale-105"
+          <Link
+            to="/about"
+            className="min-h-[44px] flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-green-800 text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-4 rounded-full font-semibold transition duration-300 hover:scale-105"
           >
             <Compass size={20} />
             Discover More
-          </a>
+          </Link>
 
         </motion.div>
 
@@ -246,8 +253,7 @@ export default function Hero() {
 
       <button
         onClick={prevSlide}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-green-900 p-3 rounded-full shadow-lg transition"
-        aria-label="Previous image"
+        className="absolute left-3 bottom-5 md:bottom-auto md:left-5 md:top-1/2 md:-translate-y-1/2 z-20 min-w-11 min-h-11 bg-white/90 hover:bg-white text-green-900 rounded-full shadow-lg transition flex items-center justify-center"
       >
         <ChevronLeft size={25} />
       </button>
@@ -256,45 +262,32 @@ export default function Hero() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-green-900 p-3 rounded-full shadow-lg transition"
-        aria-label="Next image"
+        className="absolute right-3 bottom-5 md:bottom-auto md:right-5 md:top-1/2 md:-translate-y-1/2 z-20 min-w-11 min-h-11 bg-white/90 hover:bg-white text-green-900 rounded-full shadow-lg transition flex items-center justify-center"
       >
         <ChevronRight size={25} />
       </button>
-
-      {/* Slider Dots */}
-
-      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-
-        {images.map((image, index) => (
-          <button
-            key={image.name}
-            onClick={() => setCurrent(index)}
-            className={`h-3 rounded-full transition-all duration-300 ${
-              current === index
-                ? "w-9 bg-green-400"
-                : "w-3 bg-white/80"
-            }`}
-            aria-label={`Show ${image.name}`}
-          />
-        ))}
-
-      </div>
 
       {/* AI Chatbot Floating Button */}
 
       <button
         onClick={() => setChatOpen(!chatOpen)}
-        className="absolute bottom-6 right-6 z-50 w-16 h-16 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-2xl flex items-center justify-center transition duration-300 hover:scale-110"
-        aria-label="Open AI chatbot"
+        className="absolute bottom-24 right-4 md:bottom-6 md:right-6 z-50
+w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16
+bg-green-600 hover:bg-green-700 text-white
+rounded-full shadow-2xl flex items-center justify-center
+transition duration-300 hover:scale-110 chatbot-float"
       >
-        {chatOpen ? <X size={30} /> : <Bot size={32} />}
+        {chatOpen ? <X size={26} /> : <Bot size={28} />}
       </button>
 
       {/* AI Chatbot Window */}
 
       {chatOpen && (
-        <div className="absolute bottom-24 right-6 z-50 w-[340px] max-w-[calc(100%-32px)] h-[430px] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+        <div className="absolute bottom-40 right-3 md:bottom-24 md:right-6 z-50
+w-[340px] max-w-[calc(100%-24px)]
+h-[430px] max-h-[60vh]
+bg-white rounded-2xl shadow-2xl
+overflow-hidden flex flex-col">
 
           {/* Chat Header */}
 
@@ -307,18 +300,22 @@ export default function Hero() {
               </div>
 
               <div>
-                <h3 className="font-bold">
+                <h3 className="font-bold text-base">
                   Tenkasi AI Assistant
                 </h3>
 
-                <p className="text-xs text-green-100">
+                <p className="text-sm text-green-100">
                   Online • Tourism Support
                 </p>
               </div>
 
             </div>
 
-            <button onClick={() => setChatOpen(false)}>
+            <button
+              onClick={() => setChatOpen(false)}
+              className="min-w-11 min-h-11 flex items-center justify-center"
+              aria-label="Close chatbot"
+            >
               <X size={22} />
             </button>
 
@@ -365,12 +362,12 @@ export default function Hero() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Ask about Tenkasi..."
-              className="flex-1 min-w-0 px-4 py-3 bg-gray-100 rounded-full outline-none text-sm focus:ring-2 focus:ring-green-500"
+              className="flex-1 min-w-0 min-h-[44px] px-4 py-3 bg-gray-100 rounded-full outline-none text-sm focus:ring-2 focus:ring-green-500"
             />
 
             <button
               type="submit"
-              className="bg-green-600 hover:bg-green-700 text-white p-3 rounded-full transition"
+              className="min-w-11 min-h-11 bg-green-600 hover:bg-green-700 text-white p-3 rounded-full transition flex items-center justify-center"
               aria-label="Send message"
             >
               <Send size={18} />

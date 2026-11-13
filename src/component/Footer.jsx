@@ -5,12 +5,13 @@ export default function Footer() {
 
   const navigation = [
     { name: "Home", link: "/" },
-    { name: "About Us", link: "/about" },
-    { name: "Destinations", link: "/destination" },
+    { name: "About ", link: "/about" },
+    { name: "Destination", link: "/destination" },
     { name: "TasteTrails", link: "/taste-trails" },
-    { name: "Packages", link: "/tour-packages" },
-    { name: "TripType", link: "/planyourtrip" },
-     { name: "Contact", link: "/contact" }
+    { name: "Package", link: "/tour-packages" },
+    { name: "PlanYourTrip", link: "/planyourtrip" },
+     { name: "Contact", link: "/contact" },
+     {name:"Reviews", link:"/reviews"}
   ];
 
   const topSpots = [
@@ -59,7 +60,7 @@ export default function Footer() {
               {topSpots.map((spot) => (
                 <li key={spot}>
                   <a
-                    href="#destination"
+                    href="/destination"
                     className="text-gray-300 text-sm hover:text-[#e69b38] transition duration-300"
                   >
                     {spot}
@@ -86,61 +87,23 @@ export default function Footer() {
               <p>
                 <span className="text-white font-semibold">Phone:</span>
                 <br />
-                <a href="tel:+910000000000" className="hover:text-[#e69b38]">
-                  +91 00000 00000
+                <a href="tel:+91XXXXXXXXXX" className="hover:text-[#e69b38]">
+                  +91 XXXXX XXXXX
                 </a>
               </p>
 
               <p>
                 <span className="text-white font-semibold">Email:</span>
                 <br />
-                <a href="mailto:info@tenkasitrails.com" className="hover:text-[#e69b38]">
-                  info@tenkasitrails.com
+                <a href="mailto:info@tenkasitorism.com" className="hover:text-[#e69b38]">
+                  info@tenkasitourism.com
                 </a>
               </p>
 
             </div>
 
 
-              <div className="mt-7">
-  <h3 className="text-white font-semibold mb-4">
-    Follow Us
-  </h3>
-
-  <div className="flex gap-4">
-
-    <a
-      href="https://www.facebook.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Facebook"
-      className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#e69b38] transition"
-    >
-      <span className="font-bold text-xl">f</span>
-    </a>
-
-    <a
-      href="https://www.instagram.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Instagram"
-      className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#e69b38] transition"
-    >
-      <span className="font-bold text-lg">@</span>
-    </a>
-
-    <a
-      href="https://www.youtube.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="YouTube"
-      className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#e69b38] transition"
-    >
-      <span className="font-bold text-sm">▶</span>
-    </a>
-
-  </div>
-</div>
+          
             
 
           </div>

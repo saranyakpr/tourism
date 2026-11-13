@@ -22,7 +22,7 @@ export default function Welcome() {
     },
     {
       image: "/temple1.jpg",
-      title: "Mountaintemple Views",
+      title: "Mountain Temple ",
       className: "animate-float-slow"
     }
   ];

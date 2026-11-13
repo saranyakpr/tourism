@@ -6,10 +6,12 @@ import Promise from "../component/Promise";
 import Footer from "../component/Footer";
 import Scrolltop from "../component/Scrolltop";
 import Map from "../component/Map";
+
 export default function Home(){
     return(
         <>
         <Homenavbar></Homenavbar>
+
         <Hero></Hero>
         <Welcome></Welcome>
         <Promise></Promise>
