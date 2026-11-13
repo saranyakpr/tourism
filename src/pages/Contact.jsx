@@ -15,19 +15,12 @@ import {
   Mail,
   Phone,
   MapPin,
-  Send,
   MessageCircle,
   ChevronDown,
   Sparkles,
-  CheckCircle2,
   ArrowUpRight,
-  Camera,
-  
-  Globe,
-  Clock,
-  Headphones,
-  Compass,
 } from "lucide-react";
+
 import Homenavbar from "../component/Homenavbar";
 import Footer from "../component/Footer";
 
@@ -63,37 +56,6 @@ const contactDetails = [
     href: "https://www.google.com/maps/search/?api=1&query=Tenkasi%2C+Tamil+Nadu",
     action: "Explore location",
   },
-  {
-    icon: Camera,
-    title: "Instagram",
-    detail: "@tenkasi_tourism",
-    description: "Follow us for travel updates",
-    color: "from-green-400 to-teal-700",
-    href: "https://www.instagram.com/tenkasi_tourism/",
-    action: "Follow us",
-  },
-];
-
-/* -------------------------------------------------------
-   CONTACT GALLERY
-------------------------------------------------------- */
-
-const contactImages = [
-  {
-    src: "/images/contact-hero1.jpg",
-    alt: "Beautiful tourist destination in Tenkasi",
-    className: "col-span-2 row-span-2",
-  },
-  {
-    src: "/images/c1.jpg",
-    alt: "Nature and greenery in Tenkasi",
-    className: "col-span-1 row-span-1",
-  },
-  {
-    src: "/images/c2.jpg",
-    alt: "Scenic landscape of Tenkasi",
-    className: "col-span-1 row-span-1",
-  },
 ];
 
 /* -------------------------------------------------------
@@ -104,22 +66,27 @@ const faqs = [
   {
     question: "How can I explore tourist places in Tenkasi?",
     answer:
-      "Visit our Tourist Places page to explore destinations and read useful travel information.",
+      "Visit our Tourist Places page to discover waterfalls, temples, dams and other attractions with useful destination information.",
   },
   {
-    question: "Can I plan a trip through this website?",
+    question: "Can I plan my trip using this website?",
     answer:
-      "Yes. You can use our Plan Your Trip page to organise your travel preferences and itinerary.",
+      "Yes. Visit our Plan Your Trip page to explore travel suggestions and organise your visit to Tenkasi.",
   },
   {
-    question: "Can I get help with tour packages?",
+    question: "Where can I find information about local experiences?",
     answer:
-      "You can send your enquiry through our contact form. Package assistance can be connected once the enquiry system is integrated.",
+      "Explore our Taste Trails and Experiences pages to discover local food, culture and nature-based experiences.",
   },
   {
-    question: "Can I suggest a tourist destination?",
+    question: "Can I suggest a new tourist destination?",
     answer:
-      "Yes. Use the enquiry form to share a destination suggestion or feedback with us.",
+      "You can share your suggestions through our available social media or contact channels, if provided.",
+  },
+  {
+    question: "Where can I find the location of Tenkasi?",
+    answer:
+      "You can view the Google Map on this page to locate Tenkasi, Tamil Nadu and explore its surrounding areas.",
   },
 ];
 
@@ -153,8 +120,13 @@ function ContactTiltCard({
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    setRotateX(((y - rect.height / 2) / (rect.height / 2)) * -maxTilt);
-    setRotateY(((x - rect.width / 2) / (rect.width / 2)) * maxTilt);
+    setRotateX(
+      ((y - rect.height / 2) / (rect.height / 2)) * -maxTilt
+    );
+
+    setRotateY(
+      ((x - rect.width / 2) / (rect.width / 2)) * maxTilt
+    );
 
     if (glare) {
       setGlarePos({
@@ -176,7 +148,6 @@ function ContactTiltCard({
   };
 
   return (
-  
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
@@ -205,7 +176,6 @@ function ContactTiltCard({
         />
       )}
     </motion.div>
-
   );
 }
 
@@ -223,7 +193,9 @@ function ContactSectionReveal({
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 35 }}
+      initial={
+        reduceMotion ? { opacity: 1 } : { opacity: 0, y: 35 }
+      }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{
@@ -370,7 +342,7 @@ function ContactHeroSection({ title, subtitle, image }) {
         />
       </motion.div>
 
-      {/* LIGHTER OVERLAY FOR CLEAR IMAGE */}
+      {/* OVERLAY */}
 
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-emerald-950/15 to-black/30" />
 
@@ -405,7 +377,6 @@ function ContactHeroSection({ title, subtitle, image }) {
             }}
             className="pointer-events-none absolute -top-10 right-[-10%] h-72 w-[120%] rounded-full bg-lime-100/15 blur-[100px]"
           />
-
         </>
       )}
 
@@ -442,7 +413,11 @@ function ContactHeroSection({ title, subtitle, image }) {
         </motion.div>
 
         <motion.h1
-          initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 35 }}
+          initial={
+            reduceMotion
+              ? { opacity: 1 }
+              : { opacity: 0, y: 35 }
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15 }}
           className="mt-7 text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
@@ -453,7 +428,11 @@ function ContactHeroSection({ title, subtitle, image }) {
         </motion.h1>
 
         <motion.p
-          initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 25 }}
+          initial={
+            reduceMotion
+              ? { opacity: 1 }
+              : { opacity: 0, y: 25 }
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.3 }}
           className="mx-auto mt-7 max-w-2xl text-base leading-8 text-white drop-shadow-md md:text-xl"
@@ -469,9 +448,9 @@ function ContactHeroSection({ title, subtitle, image }) {
         />
       </motion.div>
 
-      {/* BOTTOM SHAPE */}
+      {/* BOTTOM SHAPE - SAME IN BOTH THEMES */}
 
-      <div className="absolute bottom-0 left-0 h-10 w-full bg-gradient-to-t from-[#F7FAF5] to-transparent dark:from-[#10251A]" />
+      <div className="absolute bottom-0 left-0 h-10 w-full bg-gradient-to-t from-[#f7f8ef] to-transparent" />
     </section>
   );
 }
@@ -482,387 +461,390 @@ function ContactHeroSection({ title, subtitle, image }) {
 
 export default function Contact() {
   const [openFaq, setOpenFaq] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const reduceMotion = useReducedMotion();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Frontend demo only.
-    // Connect EmailJS or a backend to send actual enquiries.
-
-    console.log("Enquiry Details:", formData);
-
-    setIsSubmitted(true);
-
-    alert(
-      "Your form design is ready! Connect a backend or email service to send this enquiry."
-    );
-  };
-
   return (
     <>
-    <Homenavbar></Homenavbar>
-    <motion.div
-      initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="w-full overflow-x-clip bg-[#f7f8ef] text-[#3d4d3e] dark:bg-[#10251A] dark:text-green-50"
-    >
-      {/* 1. FULL WIDTH HERO */}
+      <Homenavbar />
 
-      <ContactHeroSection
-        title="Let's Connect"
-        subtitle="Have a question about visiting Tenkasi? We would love to hear from you."
-        image="/images/grass.png"
-      />
+      <motion.div
+        initial={
+          reduceMotion
+            ? { opacity: 1 }
+            : { opacity: 0, y: 15 }
+        }
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full overflow-x-clip bg-[#f7f8ef] text-[#3d4d3e]"
+      >
+        {/* 1. HERO SECTION */}
 
-      {/* MAIN CONTENT CONTAINER */}
+        <ContactHeroSection
+          title="Let's Connect"
+          subtitle="Have a question about visiting Tenkasi? We would love to hear from you."
+          image="/images/grass.png"
+        />
 
-      <main className="mx-auto w-full max-w-7xl px-5 md:px-8">
+        <main className="mx-auto w-full max-w-7xl px-5 md:px-8">
 
-        {/* ------------------------------------------------
-             2. GET IN TOUCH - CONTACT INFORMATION
-        ------------------------------------------------ */}
+          {/* 2. CONTACT INFORMATION */}
 
-        <section className="py-20 md:py-24">
+          <section className="py-20 md:py-24">
 
-          <ContactSectionReveal>
-            <div className="mb-14 text-center">
+            <ContactSectionReveal>
+              <div className="mb-14 text-center">
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="mb-4 inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-bold uppercase tracking-widest text-[#465747] dark:border-green-800 dark:bg-green-900/40 dark:text-green-300"
-              >
-                <MessageCircle size={16} />
-                Get In Touch
-              </motion.div>
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-5 py-2 text-sm font-bold uppercase tracking-widest text-[#465747]">
+                  <MessageCircle size={16} />
+                  Get In Touch
+                </div>
 
-              <h2 className="font-serif text-3xl font-extrabold tracking-tight text-[#344536] dark:text-white md:text-5xl">
-                We'd Love to{" "}
-                <span className="bg-gradient-to-r from-green-700 to-emerald-400 bg-clip-text text-transparent dark:from-green-300 dark:to-emerald-200">
-                  Hear From You
-                </span>
-              </h2>
+                <h2 className="font-serif text-3xl font-extrabold tracking-tight text-[#344536] md:text-5xl">
+                  We'd Love to{" "}
+                  <span className="bg-gradient-to-r from-green-700 to-emerald-400 bg-clip-text text-transparent">
+                    Hear From You
+                  </span>
+                </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#536354] dark:text-green-100/70 md:text-lg">
-                Have questions about your next trip? Reach out to us.
-                Our contact information is here to help you discover Tenkasi.
-              </p>
-            </div>
-          </ContactSectionReveal>
+                <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#536354] md:text-lg">
+                  Have questions about your next trip? Reach out to us.
+                  Our contact information is here to help you discover Tenkasi.
+                </p>
 
-          {/* CONTACT CARDS */}
+              </div>
+            </ContactSectionReveal>
 
-          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+            {/* CONTACT CARDS */}
 
-            {contactDetails.map((item, index) => {
-              const Icon = item.icon;
+            <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
 
-              return (
-                <ContactSectionReveal
-                  key={item.title}
-                  delay={index * 0.12}
-                >
-                  <ContactTiltCard
-                    maxTilt={12}
-                    className="group h-full rounded-3xl"
+              {contactDetails.map((item, index) => {
+                const Icon = item.icon;
+
+                return (
+                  <ContactSectionReveal
+                    key={item.title}
+                    delay={index * 0.1}
                   >
-                    <motion.a
+                    <a
                       href={item.href}
-                      target={item.title === "Instagram" || item.title === "Our Location" ? "_blank" : undefined}
+                      target={
+                        item.title === "Our Location"
+                          ? "_blank"
+                          : undefined
+                      }
                       rel="noopener noreferrer"
-                      whileHover={reduceMotion ? {} : { y: -10, scale: 1.025 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="relative flex h-full min-h-[290px] flex-col items-center overflow-hidden rounded-3xl border border-green-100 bg-[#f7f8ef] px-5 py-9 text-center shadow-lg shadow-green-900/5 transition-all duration-500 hover:border-green-400 hover:shadow-2xl hover:shadow-green-900/15 dark:border-green-900 dark:bg-[#1B3526]"
+                      className="group relative flex min-h-[290px] flex-col items-center overflow-hidden rounded-3xl border border-[#DCE8D7] bg-[#F0F5E9] px-5 py-9 text-center shadow-md shadow-green-900/5 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#00B878] hover:bg-green-800 hover:shadow-2xl hover:shadow-green-950/25"
                     >
-                      {/* Background decoration */}
 
-                      <div className="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-green-100/60 blur-2xl transition-all duration-500 group-hover:scale-150 dark:bg-green-800/20" />
+                      {/* ICON */}
 
-                      <div className="pointer-events-none absolute -bottom-12 -left-12 h-32 w-32 rounded-full bg-emerald-100/50 blur-2xl dark:bg-emerald-900/20" />
-
-                      {/* 3D ICON */}
-
-                      <motion.div
-                        animate={
-                          reduceMotion
-                            ? {}
-                            : {
-                                y: [0, -9, 0],
-                                rotateY: [0, 8, 0, -8, 0],
-                              }
-                        }
-                        transition={{
-                          duration: 5 + index * 0.7,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        style={{
-                          transformStyle: "preserve-3d",
-                          translateZ: 35,
-                        }}
-                        className={`relative z-10 mb-7 grid h-20 w-20 place-items-center rounded-[26px] bg-gradient-to-br ${item.color} text-white shadow-[0_15px_25px_-8px_rgba(22,101,52,0.5)] transition-shadow duration-500 group-hover:shadow-[0_22px_35px_-8px_rgba(22,101,52,0.6)]`}
+                      <div
+                        className={`relative mb-7 grid h-20 w-20 place-items-center rounded-[26px] bg-gradient-to-br ${item.color} text-white shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:from-[#A7F3D0] group-hover:to-[#34D399] group-hover:text-[#173D2B]`}
                       >
-                        <div className="absolute inset-1 rounded-[22px] border border-white/30" />
-
                         <Icon size={32} strokeWidth={1.8} />
 
-                        <div className="absolute -right-2 -top-2 h-5 w-5 rounded-full border-2 border-white bg-lime-300 shadow-md" />
-                      </motion.div>
+                        <div className="absolute -right-2 -top-2 h-5 w-5 rounded-full border-2 border-white bg-lime-300 transition-all duration-300 group-hover:bg-white" />
+                      </div>
 
                       {/* CARD CONTENT */}
 
-                      <div
-                        className="relative z-10"
-                        style={{ transform: "translateZ(20px)" }}
-                      >
-                        <h3 className="font-serif mb-3 text-xl font-extrabold text-[#344536] dark:text-white">
-                          {item.title}
-                        </h3>
+                      <h3 className="mb-3 font-serif text-xl font-extrabold text-[#344536] transition-colors duration-500 group-hover:text-white">
+                        {item.title}
+                      </h3>
 
-                        <p className="break-words text-sm font-bold text-[#465747] dark:text-green-300">
-                          {item.detail}
-                        </p>
+                      <p className="break-words text-sm font-bold text-[#465747] transition-colors duration-500 group-hover:text-[#A7F3D0]">
+                        {item.detail}
+                      </p>
 
-                        <p className="mt-3 text-sm leading-6 text-[#687568] dark:text-green-100/60">
-                          {item.description}
-                        </p>
+                      <p className="mt-3 text-sm leading-6 text-[#687568] transition-colors duration-500 group-hover:text-[#D1E7D8]">
+                        {item.description}
+                      </p>
 
-                        <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#526b45] transition-all duration-300 group-hover:gap-3 dark:text-green-300">
-                          {item.action}
-                          <ArrowUpRight size={16} />
-                        </div>
+                      <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#526B45] transition-all duration-300 group-hover:gap-3 group-hover:text-[#A7F3D0]">
+                        {item.action}
+
+                        <ArrowUpRight
+                          size={16}
+                          className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                        />
                       </div>
-                    </motion.a>
-                  </ContactTiltCard>
-                </ContactSectionReveal>
-              );
-            })}
 
-          </div>
-          </section>
-
-        {/* ------------------------------------------------
-             4. FAQ SECTION
-        ------------------------------------------------ */}
-
-        <section className="py-20 md:py-24">
-
-          <ContactSectionReveal>
-            <div className="mb-12 text-center">
-
-              <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 px-5 py-2 text-xs font-bold uppercase tracking-widest text-[#465747] dark:bg-green-900/50 dark:text-green-300">
-                <MessageCircle size={15} />
-                Need Help?
-              </p>
-
-              <motion.h2
-                initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="text-3xl font-extrabold text-[#344536] dark:text-white md:text-5xl"
-              >
-                Frequently Asked Questions
-              </motion.h2>
-
-              <p className="mx-auto mt-4 max-w-xl leading-7 text-[#687568] dark:text-green-100/60">
-                Find answers to some common questions about visiting Tenkasi.
-              </p>
+                    </a>
+                  </ContactSectionReveal>
+                );
+              })}
 
             </div>
-          </ContactSectionReveal>
 
-          <div className="mx-auto max-w-3xl space-y-4">
+          </section>
 
-            {faqs.map((faq, index) => (
-              <ContactSectionReveal
-                key={faq.question}
-                delay={index * 0.08}
-              >
-             
-                      <motion.div
-        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 35, scale: 0.97 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
-        whileHover={reduceMotion ? {} : {
-          y: -6,
-          scale: 1.01,
-          boxShadow: "0 18px 35px -15px rgba(22,101,52,0.25)",
-        }}
-        transition={{
-          duration: 0.6,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-                  
-        className="overflow-hidden rounded-2xl border border-green-100 bg-[#f7f8ef] shadow-sm transition-shadow duration-300 hover:shadow-lg dark:border-green-900 dark:bg-[#1B3526]"
+          {/* 3. FAQ SECTION */}
+
+          <section className="relative my-10 overflow-hidden rounded-[32px] border border-green-200/70 bg-gradient-to-br from-[#e3f0df] via-[#edf4e8] to-[#d9eadb] px-5 py-20 shadow-sm md:my-14 md:px-10 md:py-24">
+
+            <ContactSectionReveal>
+              <div className="mb-12 text-center">
+
+                <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-100 px-5 py-2 text-xs font-bold uppercase tracking-widest text-[#465747]">
+                  <MessageCircle size={15} />
+                  Need Help?
+                </p>
+
+                <motion.h2
+                  initial={
+                    reduceMotion
+                      ? { opacity: 1 }
+                      : { opacity: 0, y: 35 }
+                  }
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="text-3xl font-extrabold text-[#344536] md:text-5xl"
                 >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setOpenFaq(openFaq === index ? -1 : index)
+                  Frequently Asked Questions
+                </motion.h2>
+
+                <p className="mx-auto mt-4 max-w-xl leading-7 text-[#687568]">
+                  Find answers to some common questions about visiting Tenkasi.
+                </p>
+
+              </div>
+            </ContactSectionReveal>
+
+            <div className="mx-auto max-w-3xl space-y-4">
+
+              {faqs.map((faq, index) => (
+                <ContactSectionReveal
+                  key={faq.question}
+                  delay={index * 0.08}
+                >
+
+                  <motion.div
+                    initial={
+                      reduceMotion
+                        ? { opacity: 1 }
+                        : { opacity: 0, y: 35, scale: 0.97 }
                     }
-                    aria-expanded={openFaq === index}
-                    className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left font-bold text-[#344536] dark:text-white md:p-6"
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.2,
+                    }}
+                    whileHover={
+                      reduceMotion
+                        ? {}
+                        : {
+                            y: -6,
+                            scale: 1.01,
+                            boxShadow:
+                              "0 18px 35px -15px rgba(22,101,52,0.25)",
+                          }
+                    }
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="overflow-hidden rounded-2xl border border-green-100 bg-[#f7f8ef] shadow-sm transition-shadow duration-300 hover:shadow-lg"
                   >
-                    <span>{faq.question}</span>
 
-                    <motion.span
-                      animate={{
-                        rotate: openFaq === index ? 180 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="shrink-0 text-[#526b45] dark:text-green-300"
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setOpenFaq(
+                          openFaq === index ? -1 : index
+                        )
+                      }
+                      aria-expanded={openFaq === index}
+                      className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left font-bold text-[#344536] md:p-6"
                     >
-                      <ChevronDown size={22} />
-                    </motion.span>
-                  </button>
+                      <span>{faq.question}</span>
 
-                  <AnimatePresence initial={false}>
-                    {openFaq === index && (
-                      <motion.div
-                        key="answer"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{
-                          duration: 0.35,
-                          ease: "easeInOut",
+                      <motion.span
+                        animate={{
+                          rotate: openFaq === index ? 180 : 0,
                         }}
-                        className="overflow-hidden"
+                        transition={{ duration: 0.3 }}
+                        className="shrink-0 text-[#526b45]"
                       >
-                        <div className="border-t border-green-100 px-5 py-5 text-sm leading-8 text-[#536354] dark:border-green-900 dark:text-green-100/70 md:px-6">
-                          {faq.answer}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                        <ChevronDown size={22} />
+                      </motion.span>
 
-                </motion.div>
-              </ContactSectionReveal>
-            ))}
+                    </button>
 
-          </div>
-        </section>
+                    <AnimatePresence initial={false}>
+                      {openFaq === index && (
+                        <motion.div
+                          key="answer"
+                          initial={{
+                            height: 0,
+                            opacity: 0,
+                          }}
+                          animate={{
+                            height: "auto",
+                            opacity: 1,
+                          }}
+                          exit={{
+                            height: 0,
+                            opacity: 0,
+                          }}
+                          transition={{
+                            duration: 0.35,
+                            ease: "easeInOut",
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <div className="border-t border-green-100 px-5 py-5 text-sm leading-8 text-[#536354] md:px-6">
+                            {faq.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
-        {/* ------------------------------------------------
-             5. LOCATION / GOOGLE MAPS
-        ------------------------------------------------ */}
+                  </motion.div>
 
-        <ContactSectionReveal>
+                </ContactSectionReveal>
+              ))}
 
-          <motion.section
-              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 60, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.15 }}
+            </div>
+
+          </section>
+
+          {/* 4. LOCATION / GOOGLE MAPS */}
+
+          <ContactSectionReveal>
+
+            <motion.section
+              initial={
+                reduceMotion
+                  ? { opacity: 1 }
+                  : { opacity: 0, y: 60, scale: 0.96 }
+              }
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
               transition={{
                 duration: 1,
                 ease: [0.22, 1, 0.36, 1],
               }}
               whileHover={reduceMotion ? {} : { y: -4 }}
-              className="mb-16 overflow-hidden rounded-[30px] border border-green-100 bg-[#f7f8ef] shadow-xl transition-shadow duration-500 hover:shadow-2xl hover:shadow-green-900/10 dark:border-green-900 dark:bg-[#1B3526]"
+              className="mb-16 overflow-hidden rounded-[30px] border border-green-100 bg-[#f7f8ef] shadow-xl transition-shadow duration-500 hover:shadow-2xl hover:shadow-green-900/10"
             >
 
-            <div className="flex flex-col justify-between gap-6 p-7 md:flex-row md:items-center md:p-10">
+              <div className="flex flex-col justify-between gap-6 p-7 md:flex-row md:items-center md:p-10">
 
-              <div>
+                <div>
 
-                <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#526b45] dark:text-green-300">
-                  <MapPin size={17} />
-                  Our Location
-                </p>
+                  <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[#526b45]">
+                    <MapPin size={17} />
+                    Our Location
+                  </p>
 
-                <h2 className="font-serif text-3xl font-extrabold text-[#344536] dark:text-white md:text-4xl">
-                  Find Us in Tenkasi
-                </h2>
+                  <h2 className="font-serif text-3xl font-extrabold text-[#344536] md:text-4xl">
+                    Find Us in Tenkasi
+                  </h2>
 
-                <p className="mt-4 text-[#687568] dark:text-green-100/60">
-                  Explore the beautiful destination of Tenkasi, Tamil Nadu.
-                </p>
+                  <p className="mt-4 text-[#687568]">
+                    Explore the beautiful destination of Tenkasi, Tamil Nadu.
+                  </p>
 
-                <div className="mt-5 flex items-center gap-3 text-[#465747] dark:text-green-300">
-                  <MapPin size={21} />
+                  <div className="mt-5 flex items-center gap-3 text-[#465747]">
 
-                  <span className="font-semibold">
-                    Tenkasi, Tamil Nadu, India
-                  </span>
+                    <MapPin size={21} />
+
+                    <span className="font-semibold">
+                      Tenkasi, Tamil Nadu, India
+                    </span>
+
+                  </div>
+
                 </div>
+
+                <motion.a
+                  href="https://www.google.com/maps/search/?api=1&query=Tenkasi%2C+Tamil+Nadu"
+                  target="_blank"
+                  rel="noreferrer"
+                  whileHover={
+                    reduceMotion
+                      ? {}
+                      : { scale: 1.05, y: -3 }
+                  }
+                  whileTap={{ scale: 0.96 }}
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-green-800 px-6 py-4 font-bold text-white shadow-md transition-colors hover:bg-green-700"
+                >
+                  <MapPin size={18} />
+                  Open in Google Maps
+                  <ArrowUpRight size={17} />
+                </motion.a>
 
               </div>
 
-              <motion.a
-                href="https://www.google.com/maps/search/?api=1&query=Tenkasi%2C+Tamil+Nadu"
-                target="_blank"
-                rel="noreferrer"
-                whileHover={reduceMotion ? {} : { scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.96 }}
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-green-800 px-6 py-4 font-bold text-white shadow-md transition-colors hover:bg-green-700 dark:bg-green-700"
+              {/* MAP */}
+
+              <motion.div
+                initial={
+                  reduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 0, y: 30 }
+                }
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="px-4 pb-4 md:px-8 md:pb-8"
               >
-                <MapPin size={18} />
-                Open in Google Maps
-                <ArrowUpRight size={17} />
-              </motion.a>
 
-            </div>
-
-            {/* MAP */}
-
-            <motion.div
-              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="px-4 pb-4 md:px-8 md:pb-8"
-            >
-              <ContactTiltCard
-                maxTilt={3}
-                glare={false}
-                className="overflow-hidden rounded-2xl border border-green-100 shadow-lg dark:border-green-900"
-              >
-                <motion.div
-                  whileHover={reduceMotion ? {} : { scale: 1.01 }}
-                  transition={{ duration: 0.4 }}
+                <ContactTiltCard
+                  maxTilt={3}
+                  glare={false}
+                  className="overflow-hidden rounded-2xl border border-green-100 shadow-lg"
                 >
-                  <iframe
-                    title="Tenkasi Tamil Nadu Google Map"
-                    src="https://www.google.com/maps?q=Tenkasi%2C%20Tamil%20Nadu%2C%20India&z=13&output=embed"
-                    className="h-[260px] w-full border-0 md:h-[350px]"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </motion.div>
-              </ContactTiltCard>
-            </motion.div>
 
-         </motion.section>
+                  <motion.div
+                    whileHover={
+                      reduceMotion ? {} : { scale: 1.01 }
+                    }
+                    transition={{ duration: 0.4 }}
+                  >
 
-        </ContactSectionReveal>
+                    <iframe
+                      title="Tenkasi Tamil Nadu Google Map"
+                      src="https://www.google.com/maps?q=Tenkasi%2C%20Tamil%20Nadu%2C%20India&z=13&output=embed"
+                      className="h-[260px] w-full border-0 md:h-[350px]"
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
 
-      </main>
-    </motion.div>
-    <Footer></Footer>
+                  </motion.div>
+
+                </ContactTiltCard>
+
+              </motion.div>
+
+            </motion.section>
+
+          </ContactSectionReveal>
+
+        </main>
+
+      </motion.div>
+
+      <Footer />
+
     </>
   );
 }

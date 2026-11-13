@@ -40,7 +40,7 @@ const places = [
   "Old Courtallam Falls",
   "Kasi Viswanathar Temple",
   "Thirumalai Kovil",
-  "Manimuthar Dam",
+  "Sundarapandiapuram",
   "Gundar Dam",
   "Other",
 ];
@@ -171,21 +171,21 @@ function ReviewCard({ review, vote, onVote, onShare }) {
         transformPerspective: 1000,
         transformStyle: "preserve-3d",
       }}
-      className="flex h-full flex-col rounded-2xl border border-green-100 bg-[#f7f8ef] p-4 shadow-sm transition-colors duration-500 hover:border-green-300 dark:border-gray-700 dark:bg-gray-900 sm:p-4"
+      className="flex h-full flex-col rounded-2xl border border-green-100 bg-[#f7f8ef] p-4 shadow-sm transition-colors duration-500 hover:border-green-300   sm:p-4"
     >
       {/* REVIEWER INFORMATION */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-lg font-bold text-[#465747] dark:bg-green-900 dark:text-green-200">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-lg font-bold text-[#465747]  ">
             {initials || "V"}
           </div>
 
           <div>
-            <h3 className="font-serif font-semibold text-[#344536] dark:text-white">
+            <h3 className="font-serif font-semibold text-[#344536] ">
               {review.name}
             </h3>
 
-            <p className="mt-1 flex items-center gap-1 text-xs text-[#687568] dark:text-gray-400">
+            <p className="mt-1 flex items-center gap-1 text-xs text-[#687568] ">
               <CalendarDays size={13} />
               {formattedDate}
             </p>
@@ -197,7 +197,7 @@ function ReviewCard({ review, vote, onVote, onShare }) {
           onClick={() => onShare(review)}
           title="Share review"
           aria-label="Share review"
-          className="rounded-full p-2 text-[#687568] transition hover:bg-green-50 hover:text-[#526b45] dark:hover:bg-gray-800"
+          className="rounded-full p-2 text-[#687568] transition hover:bg-green-50 hover:text-[#526b45] "
         >
           <Share2 size={17} />
         </button>
@@ -210,12 +210,12 @@ function ReviewCard({ review, vote, onVote, onShare }) {
 
       {/* PLACE AND CATEGORY */}
       <div className="mt-4">
-        <h4 className="text-lg font-bold text-[#344536] dark:text-green-300">
+        <h4 className="text-lg font-bold text-[#344536] ">
           {review.place}
         </h4>
 
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-[#465747] dark:bg-green-950 dark:text-green-300">
+          <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-[#465747]  ">
             <MapPin size={12} />
             {review.category}
           </span>
@@ -223,20 +223,20 @@ function ReviewCard({ review, vote, onVote, onShare }) {
       </div>
 
       {/* REVIEW CONTENT */}
-      <p className="mt-3 flex-1 whitespace-pre-wrap text-[13px] leading-6 text-[#536354] dark:text-gray-300">
+      <p className="mt-3 flex-1 whitespace-pre-wrap text-[13px] leading-6 text-[#536354] ">
         {review.comment}
       </p>
 
       {/* HELPFUL AND NOT HELPFUL */}
-      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-gray-100 pt-4 dark:border-gray-700">
+      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-gray-100 pt-4 ">
         <button
           type="button"
           onClick={() => onVote(review.id, "helpful")}
           aria-pressed={vote === "helpful"}
           className={`flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition ${
             vote === "helpful"
-              ? "bg-green-100 text-[#465747] dark:bg-green-900 dark:text-green-200"
-              : "bg-gray-100 text-[#536354] hover:bg-green-50 dark:bg-gray-800 dark:text-gray-300"
+              ? "bg-green-100 text-[#465747]  "
+              : "bg-gray-100 text-[#536354] hover:bg-green-50  "
           }`}
         >
           <ThumbsUp size={14} />
@@ -249,8 +249,8 @@ function ReviewCard({ review, vote, onVote, onShare }) {
           aria-pressed={vote === "notHelpful"}
           className={`flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition ${
             vote === "notHelpful"
-              ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
-              : "bg-gray-100 text-[#536354] hover:bg-red-50 dark:bg-gray-800 dark:text-gray-300"
+              ? "bg-red-100 text-red-700  "
+              : "bg-gray-100 text-[#536354] hover:bg-red-50  "
           }`}
         >
           <ThumbsDown size={14} />
@@ -509,7 +509,7 @@ export default function Reviews() {
   return (
     <>
     <Homenavbar></Homenavbar>
-    <main className="overflow-hidden bg-[#f7f8ef] dark:bg-gray-950">
+    <main className="overflow-hidden bg-[#f7f8ef] ">
 
       {/* HERO SECTION */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
@@ -650,7 +650,7 @@ export default function Reviews() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
-          className="relative z-20 grid grid-cols-1 gap-4 rounded-2xl border border-green-100 bg-[#f7f8ef] p-5 shadow-lg dark:border-gray-800 dark:bg-gray-900 sm:grid-cols-3 md:p-7"
+          className="relative z-20 grid grid-cols-1 gap-4 rounded-2xl border border-green-100 bg-[#f7f8ef] p-5 shadow-lg   sm:grid-cols-3 md:p-7"
         >
           {[
             {
@@ -685,17 +685,17 @@ export default function Reviews() {
                   damping: 18,
                 }}
                 style={{ transformPerspective: 800 }}
-                className="flex items-center gap-4 rounded-xl bg-[#f7f8ef] p-4 shadow-sm transition-shadow duration-300 hover:shadow-lg dark:bg-gray-800"
+                className="flex items-center gap-4 rounded-xl bg-[#f7f8ef] p-4 shadow-sm transition-shadow duration-300 hover:shadow-lg "
               >
-                <div className="rounded-xl bg-[#f7f8ef] p-3 shadow-sm dark:bg-gray-900">
+                <div className="rounded-xl bg-[#f7f8ef] p-3 shadow-sm ">
                   <Icon size={24} className={item.color} />
                 </div>
 
                 <div>
-                  <p className="text-sm text-[#687568] dark:text-gray-400">
+                  <p className="text-sm text-[#687568] ">
                     {item.label}
                   </p>
-                  <h3 className="mt-1 font-serif text-2xl font-bold text-[#344536] dark:text-white">
+                  <h3 className="mt-1 font-serif text-2xl font-bold text-[#344536] ">
                     {item.value}
                   </h3>
                 </div>
@@ -717,15 +717,15 @@ export default function Reviews() {
           viewport={{ once: true }}
           className="mb-10 text-center"
         >
-          <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] dark:text-green-400">
+          <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] ">
             Traveller Experiences
           </span>
 
-          <h2 className="mt-3 font-serif text-3xl font-bold text-[#344536] dark:text-white md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-bold text-[#344536]  md:text-4xl">
             What Travellers Say
           </h2>
 
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#687568] dark:text-gray-400 md:text-base">
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#687568]  md:text-base">
             Read experiences shared by visitors and discover what
             makes Tenkasi special.
           </p>
@@ -738,10 +738,10 @@ export default function Reviews() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="mb-8 grid gap-6 rounded-2xl border border-green-100 bg-[#f7f8ef] p-5 dark:border-gray-800 dark:bg-gray-900 md:grid-cols-[220px_1fr] md:p-7"
+            className="mb-8 grid gap-6 rounded-2xl border border-green-100 bg-[#f7f8ef] p-5   md:grid-cols-[220px_1fr] md:p-7"
           >
-            <div className="flex flex-col items-center justify-center border-b border-gray-100 pb-5 dark:border-gray-700 md:border-b-0 md:border-r md:pb-0 md:pr-6">
-              <h3 className="font-serif text-5xl font-bold text-[#344536] dark:text-white">
+            <div className="flex flex-col items-center justify-center border-b border-gray-100 pb-5  md:border-b-0 md:border-r md:pb-0 md:pr-6">
+              <h3 className="font-serif text-5xl font-bold text-[#344536] ">
                 {averageRating}
               </h3>
 
@@ -750,7 +750,7 @@ export default function Reviews() {
                 size={19}
               />
 
-              <p className="mt-2 text-sm text-[#687568] dark:text-gray-400">
+              <p className="mt-2 text-sm text-[#687568] ">
                 Based on {totalReviews} reviews
               </p>
             </div>
@@ -767,12 +767,12 @@ export default function Reviews() {
                     key={item.rating}
                     className="flex items-center gap-3"
                   >
-                    <span className="flex w-8 items-center gap-1 text-sm font-medium text-[#536354] dark:text-gray-300">
+                    <span className="flex w-8 items-center gap-1 text-sm font-medium text-[#536354] ">
                       {item.rating}
                       <Star size={12} />
                     </span>
 
-                    <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-700">
+                    <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-gray-100 ">
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${percentage}%` }}
@@ -814,14 +814,14 @@ export default function Reviews() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by place, visitor or experience..."
-              className="w-full rounded-xl border border-gray-200 bg-[#f7f8ef] py-3.5 pl-11 pr-4 text-sm outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+              className="w-full rounded-xl border border-gray-200 bg-[#f7f8ef] py-3.5 pl-11 pr-4 text-sm outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100   "
             />
           </div>
 
           <button
             type="button"
             onClick={clearFilters}
-            className="rounded-xl border border-green-200 px-5 py-3 text-sm font-semibold text-[#465747] transition hover:bg-green-50 dark:border-green-900 dark:text-green-300 dark:hover:bg-gray-800"
+            className="rounded-xl border border-green-200 px-5 py-3 text-sm font-semibold text-[#465747] transition hover:bg-green-50   "
           >
             Clear Filters
           </button>
@@ -835,7 +835,7 @@ export default function Reviews() {
           viewport={{ once: true }}
           className="mb-5"
         >
-          <p className="mb-3 text-sm font-semibold text-[#465747] dark:text-gray-200">
+          <p className="mb-3 text-sm font-semibold text-[#465747] ">
             Browse by category
           </p>
 
@@ -849,7 +849,7 @@ export default function Reviews() {
                 className={`rounded-full px-4 py-2 text-xs font-semibold transition md:text-sm ${
                   activeCategory === category
                     ? "bg-green-700 text-white shadow-md"
-                    : "border border-gray-200 bg-[#f7f8ef] text-[#536354] hover:border-green-500 hover:text-[#526b45] dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300"
+                    : "border border-gray-200 bg-[#f7f8ef] text-[#536354] hover:border-green-500 hover:text-[#526b45]   "
                 }`}
               >
                 {category}
@@ -864,7 +864,7 @@ export default function Reviews() {
             <select
               value={ratingFilter}
               onChange={(e) => setRatingFilter(e.target.value)}
-              className="w-full appearance-none rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 pr-10 text-sm text-[#465747] outline-none focus:border-green-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+              className="w-full appearance-none rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 pr-10 text-sm text-[#465747] outline-none focus:border-green-600   "
             >
               <option>All Ratings</option>
               <option value="5">5 Stars</option>
@@ -888,7 +888,7 @@ export default function Reviews() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full appearance-none rounded-xl border border-gray-200 bg-[#f7f8ef] py-3 pl-10 pr-10 text-sm text-[#465747] outline-none focus:border-green-600 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+              className="w-full appearance-none rounded-xl border border-gray-200 bg-[#f7f8ef] py-3 pl-10 pr-10 text-sm text-[#465747] outline-none focus:border-green-600   "
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -906,9 +906,9 @@ export default function Reviews() {
 
         {/* RESULTS HEADER */}
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm text-[#687568] dark:text-gray-400">
+          <p className="text-sm text-[#687568] ">
             Showing{" "}
-            <span className="font-bold text-[#344536] dark:text-white">
+            <span className="font-bold text-[#344536] ">
               {filteredReviews.length}
             </span>{" "}
             {filteredReviews.length === 1 ? "review" : "reviews"}
@@ -955,22 +955,22 @@ export default function Reviews() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="rounded-2xl border border-dashed border-green-200 bg-[#f7f8ef] px-5 py-14 text-center dark:border-gray-700 dark:bg-gray-900"
+            className="rounded-2xl border border-dashed border-green-200 bg-[#f7f8ef] px-5 py-14 text-center  "
           >
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-50 dark:bg-green-950">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-50 ">
               <MessageSquareText
                 size={28}
-                className="text-[#526b45] dark:text-green-400"
+                className="text-[#526b45] "
               />
             </div>
 
-            <h3 className="mt-5 font-serif text-xl font-bold text-[#344536] dark:text-white">
+            <h3 className="mt-5 font-serif text-xl font-bold text-[#344536] ">
               {reviews.length === 0
                 ? "Be the first to share your experience!"
                 : "No reviews found"}
             </h3>
 
-            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[#687568] dark:text-gray-400">
+            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[#687568] ">
               {reviews.length === 0
                 ? "Visited a beautiful place in Tenkasi? Share your experience and help others discover it."
                 : "Try changing your search or filters to find reviews."}
@@ -998,7 +998,7 @@ export default function Reviews() {
       {/* WRITE A REVIEW SECTION */}
       <section
         id="write-review"
-        className="relative isolate overflow-hidden scroll-mt-20 bg-[#f7f8ef] px-5 py-20 dark:bg-gray-900"
+        className="relative isolate overflow-hidden scroll-mt-20 bg-[#f7f8ef] px-5 py-20 "
       >
         {/* ANIMATED GREEN BACKGROUND GLOW */}
         <motion.div
@@ -1048,7 +1048,7 @@ export default function Reviews() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] dark:text-green-400"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] "
             >
               <MessageCircle size={16} />
               Share Your Thoughts
@@ -1056,14 +1056,14 @@ export default function Reviews() {
 
             <motion.h2
               variants={fadeUp}
-              className="mt-3 text-3xl font-bold text-[#344536] dark:text-white md:text-4xl"
+              className="mt-3 text-3xl font-bold text-[#344536]  md:text-4xl"
             >
               Your Experience Matters
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="mx-auto mt-3 max-w-xl text-sm leading-7 text-[#536354] dark:text-gray-400"
+              className="mx-auto mt-3 max-w-xl text-sm leading-7 text-[#536354] "
             >
               Visited Tenkasi? Share your experience and let your
               story inspire other travellers.
@@ -1106,25 +1106,25 @@ export default function Reviews() {
               transformStyle: "preserve-3d",
               transformOrigin: "center center",
             }}
-            className="relative z-10 rounded-3xl border border-green-100 bg-[#f7f8ef] p-5 shadow-[0_25px_70px_rgba(38,70,42,0.16)] transition-shadow duration-500 hover:shadow-[0_35px_85px_rgba(38,70,42,0.22)] dark:border-gray-700 dark:bg-gray-950 md:p-9"
+            className="relative z-10 rounded-3xl border border-green-100 bg-[#f7f8ef] p-5 shadow-[0_25px_70px_rgba(38,70,42,0.16)] transition-shadow duration-500 hover:shadow-[0_35px_85px_rgba(38,70,42,0.22)]   md:p-9"
           >
             {!showForm ? (
               <div className="py-8 text-center">
                 <motion.div
                   whileHover={{ rotate: 8, scale: 1.08 }}
-                  className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-50 dark:bg-green-950"
+                  className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-50 "
                 >
                   <PenLine
                     size={27}
-                    className="text-[#526b45] dark:text-green-400"
+                    className="text-[#526b45] "
                   />
                 </motion.div>
 
-                <h3 className="mt-5 font-serif text-xl font-bold text-[#344536] dark:text-white">
+                <h3 className="mt-5 font-serif text-xl font-bold text-[#344536] ">
                   Write a Review
                 </h3>
 
-                <p className="mt-2 text-sm text-[#687568] dark:text-gray-400">
+                <p className="mt-2 text-sm text-[#687568] ">
                   Tell other travellers about your Tenkasi experience.
                 </p>
 
@@ -1179,11 +1179,11 @@ export default function Reviews() {
                   {/* FORM HEADING */}
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="font-serif text-xl font-bold text-[#344536] dark:text-white">
+                      <h3 className="font-serif text-xl font-bold text-[#344536] ">
                         Write a Review
                       </h3>
 
-                      <p className="mt-1 text-sm text-[#687568] dark:text-gray-400">
+                      <p className="mt-1 text-sm text-[#687568] ">
                         Share your Tenkasi travel story.
                       </p>
                     </div>
@@ -1195,7 +1195,7 @@ export default function Reviews() {
                         setFormMessage("");
                       }}
                       aria-label="Close review form"
-                      className="rounded-full p-2 text-gray-400 transition hover:bg-gray-100 hover:text-[#465747] dark:hover:bg-gray-800"
+                      className="rounded-full p-2 text-gray-400 transition hover:bg-gray-100 hover:text-[#465747] "
                     >
                       <X size={20} />
                     </button>
@@ -1204,7 +1204,7 @@ export default function Reviews() {
                   {/* NAME AND PLACE */}
                   <div className="grid items-stretch gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-[#465747] dark:text-gray-200">
+                      <label className="mb-2 block text-sm font-semibold text-[#465747] ">
                         Your Name *
                       </label>
 
@@ -1218,12 +1218,12 @@ export default function Reviews() {
                           updateForm("name", e.target.value)
                         }
                         placeholder="Enter your name"
-                        className="relative z-20 pointer-events-auto w-full rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100 focus:shadow-[0_12px_25px_rgba(34,197,94,0.12)] dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                        className="relative z-20 pointer-events-auto w-full rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100 focus:shadow-[0_12px_25px_rgba(34,197,94,0.12)]   "
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-[#465747] dark:text-gray-200">
+                      <label className="mb-2 block text-sm font-semibold text-[#465747] ">
                         Visited Place *
                       </label>
 
@@ -1233,7 +1233,7 @@ export default function Reviews() {
                         onChange={(e) =>
                           updateForm("place", e.target.value)
                         }
-                        className="relative z-20 pointer-events-auto w-full rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                        className="relative z-20 pointer-events-auto w-full rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100   "
                       >
                         <option value="">Select a place</option>
                         {places.map((place) => (
@@ -1249,7 +1249,7 @@ export default function Reviews() {
                   <div className="grid items-stretch gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     {/* VISIT DATE */}
                     <div className="relative z-30 pointer-events-auto">
-                      <label className="mb-2 block text-sm font-semibold text-[#465747] dark:text-gray-200">
+                      <label className="mb-2 block text-sm font-semibold text-[#465747] ">
                         Visit Date
                       </label>
 
@@ -1267,12 +1267,12 @@ export default function Reviews() {
                             // Browser handles the native date picker.
                           }
                         }}
-                        className="relative z-30 w-full cursor-pointer appearance-auto rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-100 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                        className="relative z-30 w-full cursor-pointer appearance-auto rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-100   "
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-[#465747] dark:text-gray-200">
+                      <label className="mb-2 block text-sm font-semibold text-[#465747] ">
                         Review Category
                       </label>
 
@@ -1281,7 +1281,7 @@ export default function Reviews() {
                         onChange={(e) =>
                           updateForm("category", e.target.value)
                         }
-                        className="relative z-20 pointer-events-auto w-full rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                        className="relative z-20 pointer-events-auto w-full rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100   "
                       >
                         {categories
                           .filter(
@@ -1299,7 +1299,7 @@ export default function Reviews() {
 
                   {/* STAR RATING - CLICKABLE */}
                   <div className="relative z-30 pointer-events-auto">
-                    <label className="mb-3 block text-sm font-semibold text-[#465747] dark:text-gray-200">
+                    <label className="mb-3 block text-sm font-semibold text-[#465747] ">
                       Your Rating *
                     </label>
 
@@ -1327,7 +1327,7 @@ export default function Reviews() {
                         </motion.button>
                       ))}
 
-                      <span className="ml-2 text-sm font-semibold text-[#536354] dark:text-gray-300">
+                      <span className="ml-2 text-sm font-semibold text-[#536354] ">
                         {formData.rating} out of 5
                       </span>
                     </div>
@@ -1335,7 +1335,7 @@ export default function Reviews() {
 
                   {/* EXPERIENCE */}
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-[#465747] dark:text-gray-200">
+                    <label className="mb-2 block text-sm font-semibold text-[#465747] ">
                       Share Your Experience *
                     </label>
 
@@ -1349,7 +1349,7 @@ export default function Reviews() {
                         updateForm("comment", e.target.value)
                       }
                       placeholder="Tell us what you liked about this place..."
-                      className="relative z-20 pointer-events-auto w-full resize-y rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm leading-6 outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100 focus:shadow-[0_12px_25px_rgba(34,197,94,0.12)] dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                      className="relative z-20 pointer-events-auto w-full resize-y rounded-xl border border-gray-200 bg-[#f7f8ef] px-4 py-3 text-sm leading-6 outline-none transition-all duration-300 hover:-translate-y-0.5 focus:-translate-y-0.5 focus:border-green-600 focus:ring-2 focus:ring-green-100 focus:shadow-[0_12px_25px_rgba(34,197,94,0.12)]   "
                     />
 
                     <p className="mt-1 text-right text-xs text-gray-400">
@@ -1362,15 +1362,15 @@ export default function Reviews() {
                     <motion.p
                       initial={{ opacity: 0, y: -5 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-300"
+                      className="rounded-lg bg-red-50 p-3 text-sm text-red-700  "
                     >
                       {formMessage}
                     </motion.p>
                   )}
 
                   {/* SUBMIT BUTTON */}
-                  <div className="flex flex-col gap-4 border-t border-gray-100 pt-5 dark:border-gray-700 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="text-xs leading-5 text-[#687568] dark:text-gray-400">
+                  <div className="flex flex-col gap-4 border-t border-gray-100 pt-5  sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-xs leading-5 text-[#687568] ">
                       * Required fields. Your name will appear with your review.
                     </p>
 

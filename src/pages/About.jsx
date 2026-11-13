@@ -1,5 +1,4 @@
-﻿
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   AnimatePresence,
@@ -88,65 +87,67 @@ const services = [
     icon: MapPin,
     title: "Tourist Place Discovery",
     description:
-      "Explore waterfalls, temples, dams, viewpoints and other attractions around Tenkasi.",
+      "Explore Tenkasi's waterfalls, temples, dams, viewpoints and other popular tourist destinations.",
   },
   {
     icon: CalendarDays,
     title: "Trip Planning Assistance",
     description:
-      "Organise your travel ideas with destination details and suggested itineraries.",
+      "Find useful destination information to organise your visit and make your travel planning easier.",
   },
   {
     icon: Route,
-    title: "Tour Packages & Routes",
+    title: "Curated Itineraries & Routes",
     description:
-      "Explore available package information and useful travel routes for your journey.",
+      "Discover suggested one-day, two-day and weekend travel routes to explore Tenkasi.",
   },
   {
     icon: Utensils,
     title: "Local Food Experiences",
     description:
-      "Discover local dishes, food spots and the flavours of the Tenkasi region.",
+      "Discover traditional dishes, local food spots and the unique flavours of the Tenkasi region.",
   },
   {
     icon: Eye,
     title: "Hidden Gems Discovery",
     description:
-      "Find interesting places beyond the popular tourist attractions.",
+      "Explore lesser-known attractions and peaceful destinations around Tenkasi.",
   },
   {
     icon: BookOpen,
     title: "Travel Guides & Tips",
     description:
-      "Read helpful information about travel, local culture and things to know before visiting.",
+      "Get helpful information about local attractions, transportation and things to know before visiting.",
   },
 ];
 
+
 // Existing reasons preserved exactly
+
 const reasons = [
   {
     icon: Compass,
-    title: "Easy to Explore",
+    title: "All-in-One Tenkasi Guide",
     description:
-      "Find destination information and travel inspiration in one organised platform.",
+      "Find waterfalls, temples, travel routes and destination information in one organised platform.",
   },
   {
     icon: Heart,
     title: "Local Experiences",
     description:
-      "Discover the region's nature, food, culture and memorable experiences.",
+      "Discover Tenkasi's local food, traditions, culture and memorable experiences.",
   },
   {
     icon: Trees,
     title: "Nature-Focused Travel",
     description:
-      "Explore beautiful landscapes, waterfalls and peaceful natural destinations.",
+      "Explore beautiful landscapes, waterfalls, dams and peaceful natural destinations.",
   },
   {
     icon: ShieldCheck,
-    title: "Helpful Information",
+    title: "Seasonal & Local Guidance",
     description:
-      "Use clear travel guides and practical details to prepare for your journey.",
+      "Find useful travel information, seasonal tips, destination details and safety guidance.",
   },
 ];
 
@@ -578,7 +579,7 @@ function WhoWeAreSection() {
       <AboutSectionReveal>
         <AboutTiltCard
           maxTilt={12}
-          className="group overflow-hidden rounded-3xl border border-green-200/50 bg-white/30 p-2 shadow-2xl backdrop-blur-sm dark:border-green-800/40 dark:bg-green-950/20"
+          className="group overflow-hidden rounded-3xl border border-green-200/50 bg-white/30 p-2 shadow-2xl backdrop-blur-sm  "
         >
           <div className="relative overflow-hidden rounded-2xl">
             <motion.img
@@ -607,19 +608,19 @@ function WhoWeAreSection() {
                 repeat: reduceMotion ? 0 : Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute bottom-6 left-6 rounded-2xl border border-white/60 bg-white/95 px-5 py-4 shadow-xl backdrop-blur-md dark:border-green-800/70 dark:bg-[#152e20]/95"
+              className="absolute bottom-6 left-6 rounded-2xl border border-white/60 bg-white/95 px-5 py-4 shadow-xl backdrop-blur-md  "
             >
               <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-100 text-emerald-800  ">
                   <Trees size={20} />
                 </div>
 
                 <div>
-                  <p className="font-bold text-[#344536] dark:text-green-200">
+                  <p className="font-bold text-[#344536] ">
                     Explore Tenkasi
                   </p>
-                  <p className="text-xs font-medium text-[#536354] dark:text-green-100/70">
-                    Nature ΓÇó Culture ΓÇó Experiences
+                 <p className="text-xs font-medium text-[#536354]">
+                    Nature • Culture • Experiences
                   </p>
                 </div>
               </div>
@@ -631,27 +632,27 @@ function WhoWeAreSection() {
       {/* Content Side */}
       <AboutSectionReveal delay={0.15}>
         <div>
-          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] dark:text-green-300">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] ">
             About Our Platform
           </p>
 
           <h2 className="font-serif mb-6 text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl">
             Who We Are
           </h2>
-
-          <p className="mb-5 text-base leading-8 text-[#536354] dark:text-green-100/75">
-            Welcome to Tenkasi Tourism, your digital guide to
-            exploring the beauty of Tenkasi. We bring together
-            information about tourist attractions, local food,
-            culture and travel experiences.
+        <p className="mb-5 text-base leading-8 text-[#536354] ">
+            Welcome to Tour Ism, your digital travel guide to exploring
+            the beautiful region of Tenkasi. Our platform brings together
+            useful information about tourist attractions, waterfalls,
+            temples, scenic landscapes, local food and travel destinations
+            to help visitors discover the region.
           </p>
 
-          <p className="text-base leading-8 text-[#536354] dark:text-green-100/75">
-            Whether you are planning a family trip, a weekend
-            getaway or a nature-filled adventure, our platform
-            helps you discover places and prepare for your journey
-            with ease.
-          </p>
+         <p className="text-base leading-8 text-[#536354] ">
+          Whether you are planning a family holiday, a weekend getaway
+          or a nature-filled adventure, Tour Ism helps you explore
+          interesting destinations, discover local experiences and find
+          useful travel information to make your journey easier.
+        </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             {[
@@ -672,7 +673,7 @@ function WhoWeAreSection() {
                       }
                 }
                 whileTap={{ scale: 0.96 }}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-green-200/60 bg-green-100/80 px-4 py-2 text-sm font-semibold text-[#465747] shadow-sm transition-colors duration-200 hover:border-green-400 dark:border-green-800 dark:bg-green-900/60 dark:text-green-200"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-green-200/60 bg-green-100/80 px-4 py-2 text-sm font-semibold text-[#465747] shadow-sm transition-colors duration-200 hover:border-green-400   "
               >
                 <Icon size={16} />
                 {label}
@@ -947,7 +948,7 @@ const handleNext = () => {
       {/* Heading */}
       <AboutSectionReveal>
         <div className="mb-12 text-center">
-          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] dark:text-green-300">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] ">
             Explore With Us
           </p>
 
@@ -955,7 +956,7 @@ const handleNext = () => {
             What Services Do We Provide?
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] dark:text-green-100/70">
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] ">
             Everything you need to discover destinations,explore local experiences and plan your Tenkasi trip.
           </p>
         </div>
@@ -966,7 +967,7 @@ const handleNext = () => {
         <button
           onClick={handlePrevious}
           aria-label="Previous service"
-          className="grid h-12 w-12 place-items-center rounded-full border border-green-300 bg-[#f7f8ef] text-[#344536] shadow-md transition-all duration-200 hover:scale-110 hover:bg-green-100 dark:bg-[#1B3526] dark:text-green-100"
+          className="grid h-12 w-12 place-items-center rounded-full border border-green-300 bg-[#f7f8ef] text-[#344536] shadow-md transition-all duration-200 hover:scale-110 hover:bg-green-100  "
         >
           <ChevronLeft size={22} />
         </button>
@@ -974,7 +975,7 @@ const handleNext = () => {
         <button
           onClick={handleNext}
           aria-label="Next service"
-          className="grid h-12 w-12 place-items-center rounded-full border border-green-300 bg-[#f7f8ef] text-[#344536] shadow-md transition-all duration-200 hover:scale-110 hover:bg-green-100 dark:bg-[#1B3526] dark:text-green-100"
+          className="grid h-12 w-12 place-items-center rounded-full border border-green-300 bg-[#f7f8ef] text-[#344536] shadow-md transition-all duration-200 hover:scale-110 hover:bg-green-100  "
         >
           <ChevronRight size={22} />
         </button>
@@ -1007,6 +1008,7 @@ const handleNext = () => {
               <motion.div
                 key={`${service.title}-${index}`}
                 ref={index === 0 ? cardRef : null}
+                aria-hidden={index >= totalCards}
                 animate={{
                   scale: isActive ? 1.03 : 0.96,
                   opacity: isActive ? 1 : 0.72,
@@ -1021,8 +1023,8 @@ const handleNext = () => {
                 <div
                   className={`relative h-full overflow-hidden rounded-3xl border p-8 transition-colors duration-300 ${
                     isActive
-                      ? "border-emerald-400 bg-gradient-to-br from-emerald-100 via-green-50 to-white shadow-xl shadow-emerald-200/50 dark:from-emerald-900/70 dark:via-green-950/70 dark:to-[#1B3526]"
-                      : "border-green-100 bg-[#f7f8ef] shadow-sm dark:border-green-900 dark:bg-[#1B3526]"
+                      ? "border-emerald-400 bg-gradient-to-br from-emerald-100 via-green-50 to-white shadow-xl shadow-emerald-200/50   "
+                      : "border-green-100 bg-[#f7f8ef] shadow-sm  "
                   }`}
                 >
                   {/* Card Number */}
@@ -1032,7 +1034,7 @@ const handleNext = () => {
                       scale: isActive ? 1.12 : 1,
                     }}
                     transition={{ duration: 0.3 }}
-                    className="absolute right-6 top-6 text-2xl font-black dark:text-[#344536]/60"
+                    className="absolute right-6 top-6 text-2xl font-black "
                   >
                     {String((index % totalCards) + 1).padStart(2, "0")}
                   </motion.span>
@@ -1052,7 +1054,7 @@ const handleNext = () => {
                       duration: 0.35,
                       ease: "easeOut",
                     }}
-                    className="mb-6 grid h-16 w-16 place-items-center rounded-2xl dark:bg-green-900 dark:text-green-200"
+                    className="mb-6 grid h-16 w-16 place-items-center rounded-2xl  "
                   >
                     <Icon size={30} />
                   </motion.div>
@@ -1063,13 +1065,13 @@ const handleNext = () => {
                       color: isActive ? "#065F46" : "#374151",
                     }}
                     transition={{ duration: 0.3 }}
-                    className="mb-3 text-xl font-bold tracking-tight dark:text-green-50"
+                    className="mb-3 text-xl font-bold tracking-tight "
                   >
                     {service.title}
                   </motion.h3>
 
                   {/* Card Description */}
-                  <p className="leading-7 text-[#536354] dark:text-green-100/70">
+                  <p className="leading-7 text-[#536354] ">
                     {service.description}
                   </p>
 
@@ -1093,7 +1095,7 @@ const handleNext = () => {
       </div>
 
       {/* Slider Hint */}
-      <p className="mt-6 text-center text-xs text-gray-400 dark:text-green-100/40">
+      <p className="mt-6 text-center text-xs text-gray-400 ">
         Explore our services one by one
       </p>
     </section>
@@ -1108,14 +1110,14 @@ function WhyExploreSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#EAF4E8] via-[#E4EFE2] to-[#DCECE0] px-6 py-16 dark:from-[#193525] dark:via-[#162f21] dark:to-[#12281c] md:px-12 md:py-20">
+    <section className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#EAF4E8] via-[#E4EFE2] to-[#DCECE0] px-6 py-16    md:px-12 md:py-20">
       {/* Background Soft Glow Spheres */}
       <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-emerald-400/15 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-lime-400/15 blur-3xl" />
 
       <AboutSectionReveal>
         <div className="relative z-10 mb-14 text-center">
-          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] dark:text-green-300">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] ">
             Your Journey, Made Easier
           </p>
 
@@ -1123,7 +1125,7 @@ function WhyExploreSection() {
             Why Explore With Us?
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] dark:text-green-100/70">
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] ">
             Discover more, plan better and experience the
             special charm of Tenkasi.
           </p>
@@ -1139,7 +1141,7 @@ function WhyExploreSection() {
             <AboutSectionReveal key={reason.title} delay={index * 0.12}>
               <AboutTiltCard
                 maxTilt={12}
-                className="group h-full rounded-2xl border border-white/60 bg-white/90 p-7 shadow-sm transition-all duration-300 hover:border-green-400 hover:shadow-2xl dark:border-green-800/40 dark:bg-[#244532]/90"
+                className="group h-full rounded-2xl border border-white/60 bg-white/90 p-7 shadow-sm transition-all duration-300 hover:border-green-400 hover:shadow-2xl  "
               >
                 <motion.div
                   style={{
@@ -1159,7 +1161,7 @@ function WhyExploreSection() {
                     repeat: reduceMotion ? 0 : Infinity,
                     ease: "easeInOut",
                   }}
-                  className="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-green-100 text-[#465747] shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-green-700 group-hover:text-white dark:bg-green-900/80 dark:text-green-200"
+                  className="mb-6 grid h-14 w-14 place-items-center rounded-2xl bg-green-100 text-[#465747] shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-green-700 group-hover:text-white  "
                 >
                   <Icon size={26} />
                 </motion.div>
@@ -1175,7 +1177,7 @@ function WhyExploreSection() {
                     {reason.title}
                   </h3>
 
-                  <p className="text-sm leading-7 text-[#536354] dark:text-green-100/75">
+                  <p className="text-sm leading-7 text-[#536354] ">
                     {reason.description}
                   </p>
                 </div>
@@ -1227,7 +1229,7 @@ function VisitorReviewsSlider() {
     <section className="py-20">
       <AboutSectionReveal>
         <div className="mb-12 text-center">
-          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] dark:text-green-300">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] ">
             Visitor Experiences
           </p>
 
@@ -1235,7 +1237,7 @@ function VisitorReviewsSlider() {
             What Our Visitors Say
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] dark:text-green-100/70">
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] ">
             Every journey creates a memory. Discover what our
             visitors have to say about their Tenkasi experience.
           </p>
@@ -1248,10 +1250,10 @@ function VisitorReviewsSlider() {
           onMouseLeave={() => setIsPaused(false)}
           className="relative mx-auto max-w-3xl"
         >
-          <div className="relative min-h-[300px] overflow-hidden rounded-3xl border border-green-200/60 bg-white/95 p-8 shadow-xl backdrop-blur-sm dark:border-green-800/60 dark:bg-[#1B3526]/95 md:p-12">
+          <div className="relative min-h-[300px] overflow-hidden rounded-3xl border border-green-200/60 bg-white/95 p-8 shadow-xl backdrop-blur-sm   md:p-12">
             <Quote
               size={120}
-              className="pointer-events-none absolute -right-6 -top-6 text-green-100/60 dark:text-[#344536]/30"
+              className="pointer-events-none absolute -right-6 -top-6 text-green-100/60 "
             />
 
             <AnimatePresence mode="wait">
@@ -1287,19 +1289,19 @@ function VisitorReviewsSlider() {
                       />
                     ))}
 
-                    <span className="ml-2 text-sm font-semibold text-[#536354] dark:text-green-200">
+                    <span className="ml-2 text-sm font-semibold text-[#536354] ">
                       {testimonials[currentIndex].rating}.0 / 5.0
                     </span>
                   </div>
 
                   {/* Review Text */}
-                  <p className="text-lg leading-8 text-[#465747] italic dark:text-green-100/90 md:text-xl">
+                  <p className="text-lg leading-8 text-[#465747] italic  md:text-xl">
                     "{testimonials[currentIndex].review}"
                   </p>
                 </div>
 
                 {/* Author Info */}
-                <div className="mt-8 flex items-center gap-4 border-t border-green-100 pt-6 dark:border-green-900/80">
+                <div className="mt-8 flex items-center gap-4 border-t border-green-100 pt-6 ">
                   <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-tr from-green-700 to-emerald-500 text-xl font-bold text-white shadow-md">
                     {testimonials[currentIndex].name
                       .charAt(0)
@@ -1307,11 +1309,11 @@ function VisitorReviewsSlider() {
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-lg font-bold text-[#3d4d3e] dark:text-green-50">
+                    <h3 className="font-serif text-lg font-bold text-[#3d4d3e] ">
                       {testimonials[currentIndex].name}
                     </h3>
 
-                    <p className="flex items-center gap-1.5 text-sm font-medium text-[#526b45] dark:text-green-300">
+                    <p className="flex items-center gap-1.5 text-sm font-medium text-[#526b45] ">
                       <MapPin size={15} />
                       {testimonials[currentIndex].place}
                     </p>
@@ -1346,8 +1348,8 @@ function VisitorReviewsSlider() {
                   aria-label={`Go to slide ${idx + 1}`}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     currentIndex === idx
-                      ? "w-8 bg-green-700 dark:bg-green-400"
-                      : "w-2.5 bg-green-200 hover:bg-green-400 dark:bg-green-800"
+                      ? "w-8 bg-green-700 "
+                      : "w-2.5 bg-green-200 hover:bg-green-400 "
                   }`}
                 />
               ))}
@@ -1358,7 +1360,7 @@ function VisitorReviewsSlider() {
               <button
                 onClick={handlePrev}
                 aria-label="Previous review"
-                className="grid h-11 w-11 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#465747] shadow-sm transition hover:scale-105 hover:bg-green-50 dark:border-green-800 dark:bg-[#1B3526] dark:text-green-100"
+                className="grid h-11 w-11 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#465747] shadow-sm transition hover:scale-105 hover:bg-green-50   "
               >
                 <ChevronLeft size={20} />
               </button>
@@ -1366,7 +1368,7 @@ function VisitorReviewsSlider() {
               <button
                 onClick={handleNext}
                 aria-label="Next review"
-                className="grid h-11 w-11 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#465747] shadow-sm transition hover:scale-105 hover:bg-green-50 dark:border-green-800 dark:bg-[#1B3526] dark:text-green-100"
+                className="grid h-11 w-11 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#465747] shadow-sm transition hover:scale-105 hover:bg-green-50   "
               >
                 <ChevronRight size={20} />
               </button>
@@ -1374,7 +1376,7 @@ function VisitorReviewsSlider() {
           </div>
         </div>
       ) : (
-        <p className="text-center text-sm text-[#687568] dark:text-green-100/60">
+        <p className="text-center text-sm text-[#687568] ">
           Visitor reviews will appear here.
         </p>
       )}
@@ -1554,7 +1556,7 @@ function NatureGallery3DCoverflow({ images }) {
       {/* 3D Carousel Controls */}
       <div className="mt-6 flex items-center justify-between px-4">
         {/* Counter Badge */}
-        <div className="rounded-full border border-green-200 bg-white/80 px-4 py-1.5 text-xs font-bold text-[#344536] shadow-sm backdrop-blur dark:border-green-800 dark:bg-[#1B3526]/80 dark:text-green-200">
+        <div className="rounded-full border border-green-200 bg-white/80 px-4 py-1.5 text-xs font-bold text-[#344536] shadow-sm backdrop-blur   ">
           {active + 1} / {count} Destinations
         </div>
 
@@ -1567,8 +1569,8 @@ function NatureGallery3DCoverflow({ images }) {
               aria-label={`Jump to slide ${i + 1}`}
               className={`h-2.5 rounded-full transition-all duration-300 ${
                 active === i
-                  ? "w-8 bg-green-700 dark:bg-green-400"
-                  : "w-2.5 bg-green-200 hover:bg-green-400 dark:bg-green-800"
+                  ? "w-8 bg-green-700 "
+                  : "w-2.5 bg-green-200 hover:bg-green-400 "
               }`}
             />
           ))}
@@ -1579,7 +1581,7 @@ function NatureGallery3DCoverflow({ images }) {
           <button
             onClick={previous}
             aria-label="Previous gallery image"
-            className="grid h-10 w-10 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#344536] shadow-sm transition hover:scale-110 hover:bg-green-50 dark:border-green-800 dark:bg-[#1B3526] dark:text-green-100"
+            className="grid h-10 w-10 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#344536] shadow-sm transition hover:scale-110 hover:bg-green-50   "
           >
             <ChevronLeft size={20} />
           </button>
@@ -1587,7 +1589,7 @@ function NatureGallery3DCoverflow({ images }) {
           <button
             onClick={next}
             aria-label="Next gallery image"
-            className="grid h-10 w-10 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#344536] shadow-sm transition hover:scale-110 hover:bg-green-50 dark:border-green-800 dark:bg-[#1B3526] dark:text-green-100"
+            className="grid h-10 w-10 place-items-center rounded-full border border-green-200 bg-[#f7f8ef] text-[#344536] shadow-sm transition hover:scale-110 hover:bg-green-50   "
           >
             <ChevronRight size={20} />
           </button>
@@ -1712,10 +1714,10 @@ function FinalCTASection() {
             Ready to Explore Tenkasi?
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-emerald-50/90 md:text-lg">
-            Discover amazing places, find local experiences and
-            start planning your next journey through Tenkasi.
-          </p>
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-emerald-50/90 md:text-lg">
+          Discover beautiful destinations, explore local experiences
+          and plan your next journey through the scenic region of Tenkasi.
+        </p>
 
           {/* Interactive Button */}
           <div className="mt-8 flex justify-center">
@@ -1772,7 +1774,7 @@ export default function About() {
         duration: 0.6,
         ease: "easeOut",
       }}
-      className="overflow-hidden bg-[#f7f8ef] text-[#3d4d3e] dark:bg-[#10251A] dark:text-green-50"
+      className="overflow-hidden bg-[#f7f8ef] text-[#3d4d3e]"
     >
       <div className="w-full px-5 pt-6 md:px-10 lg:px-16">
         {/* 1. HERO SECTION */}
@@ -1804,11 +1806,11 @@ export default function About() {
         <section className="py-20">
           <AboutSectionReveal>
             <div className="mb-10 text-center">
-              <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-green-100 text-[#465747] shadow-sm dark:bg-green-900/80 dark:text-green-200">
+              <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-green-100 text-[#465747] shadow-sm  ">
                 <Camera size={28} />
               </div>
 
-              <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] dark:text-green-300">
+              <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#526b45] ">
                 Beautiful Places
               </p>
 
@@ -1816,7 +1818,7 @@ export default function About() {
                 Experience the Nature of Tenkasi
               </h2>
 
-              <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] dark:text-green-100/70">
+              <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#536354] ">
                 Take a look at the landscapes, waterfalls and
                 cultural places that make this region special.
               </p>
