@@ -1,132 +1,315 @@
-
 import React, { useMemo, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Homenavbar from "../component/Homenavbar";
 import Footer from "../component/Footer";
 
+const commonTravelDetails = {
+  pickupPoints: [
+    "Tenkasi",
+    "Sengottai",
+    "Tirunelveli",
+    "Madurai Airport",
+    "Tuticorin Airport"
+  ]
+};
+
+const pickupPointImages = [
+  {
+    id: "tenkasi",
+    name: "Tenkasi Railway Station",
+    location: "Tenkasi Junction, Tamil Nadu",
+    image: "/station.jpg"
+  },
+  {
+    id: "sengottai",
+    name: "Sengottai Railway Station",
+    location: "Sengottai, Tamil Nadu",
+    image: "/sengottai.jpg"
+  },
+  {
+    id: "tirunelveli",
+    name: "Tirunelveli Railway Station",
+    location: "Tirunelveli, Tamil Nadu",
+    image: "/thiru.jpg"
+  },{
+    id: "tuticorin",
+    name: "Tuticorin Airport",
+    location: "Thoothukudi, Tamil Nadu",
+    image: "/thuthukudi.jpg"
+  },
+  {
+    id: "madurai",
+    name: "Madurai Bus Stand",
+    location: "Madurai, Tamil Nadu",
+    image: "/bus2.jpg"
+  },
+   {
+    id: "tenkasi-bus",
+    name: "Tenkasi Bus Stand",
+    location: "Tenkasi, Tamil Nadu",
+    image: "/bus3.png"
+  }, {
+    id: "thirunelveli-bus",
+    name: "Thirunelveli Bus Stand",
+    location: "Thirunelveli, Tamil Nadu",
+    image: "/bus1.jpg"
+  },
+ 
+];
 const packages = [
   {
     id: 1,
     name: "Courtallam Waterfall Escape",
+    ...commonTravelDetails,
     category: "Waterfalls",
     tag: "BEST SELLER",
     duration: "1 Day",
     price: 1299,
-    rating: "4.9",
     location: "Courtallam",
-    people: "2–6 People",
-    image: "photo1.avif",
-    description: "Discover the refreshing beauty of Courtallam, surrounded by lush greenery and beautiful waterfalls.",
-    highlights: ["Main Falls", "Five Falls", "Old Courtallam", "Nature Photography"],
+    
+    image: "/newfall.jpg",
+    gallery: [
+    "fall2.jpg",
+    "fivefalls.jpg",
+    "newfall.jpg"
+  ],
+    description:
+      "Enjoy a refreshing Courtallam trip with pickup, hotel fresh-up, breakfast and visits to the region's famous waterfalls.",
+    highlights: [
+      "Main Falls",
+      "Five Falls",
+      "Old Courtallam",
+      "Local Markets",
+    ],
     itinerary: [
-      ["07:00 AM", "Departure from Tenkasi"],
-      ["08:00 AM", "Visit Courtallam Main Falls"],
-      ["11:00 AM", "Explore Five Falls"],
-      ["01:00 PM", "Lunch break"],
-      ["03:00 PM", "Old Courtallam visit, subject to access"],
-      ["05:00 PM", "Return to Tenkasi"]
+      ["06:30 AM", "Pickup from the selected pickup point"],
+      ["07:15 AM", "Reach the hotel and fresh-up"],
+      ["08:00 AM", "Breakfast provided at the hotel"],
+      ["09:00 AM", "Proceed to Courtallam Main Falls"],
+      ["11:00 AM", "Visit Five Falls and enjoy the surroundings"],
+      ["01:00 PM", "Lunch break (traveller's own expense)"],
+      ["02:30 PM", "Visit Old Courtallam Falls, subject to access"],
+      ["04:30 PM", "Visit Local Markets And Shopping Areas"],
+      ["7:00 PM", "Return journey and drop-off"]
     ]
   },
+
   {
     id: 2,
     name: "Western Ghats Adventure",
+    ...commonTravelDetails,
     category: "Nature",
     tag: "NATURE LOVER",
     duration: "2 Days",
     price: 3499,
-    rating: "4.8",
     location: "Shenkottai",
-    people: "2–8 People",
-    image: "photo2.avif",
-    description: "Escape into the peaceful mountain landscapes and beautiful green surroundings of the Western Ghats.",
-    highlights: ["Mountain Views", "Gundar Dam Area", "Sunrise View", "Photography"],
+  
+    image: "/ghats2.jpg",
+   gallery: [
+    "hid1.jpg",
+    "ghats2.jpg",
+    "ghats1.png"
+  ],
+    description:
+      "Experience the beauty of the Western Ghats with hotel fresh-up, breakfast, scenic drives and peaceful nature destinations.",
+    highlights: [
+     
+      "Mountain Views",
+      "Gundar Dam",
+      "Adavinainar Dam",
+      "Thrill Park"
+    ],
     itinerary: [
-      ["DAY 1 · 09:00 AM", "Start from Tenkasi"],
-      ["DAY 1 · 12:00 PM", "Explore the Gundar Dam surroundings"],
-      ["DAY 1 · 04:00 PM", "Sunset and photography"],
-      ["DAY 2 · 06:00 AM", "Morning scenic drive"],
-      ["DAY 2 · 11:00 AM", "Return towards Tenkasi"]
+      ["DAY 1 · 06:30 AM", "Pickup from the selected pickup point"],
+      ["DAY 1 · 07:15 AM", "Hotel arrival and fresh-up"],
+      ["DAY 1 · 08:00 AM", "Breakfast provided at the hotel"],
+      ["DAY 1 · 09:00 AM", "Start the Western Ghats sightseeing trip"],
+      ["DAY 1 · 11:00 AM", "Explore Gundar Dam surroundings"],
+      ["DAY 1 · 01:00 PM", "Lunch break (traveller's own expense)"],
+      ["DAY 1 · 03:00 PM", "Enjoy mountain views and photography"],
+      ["DAY 1 . 05:00 PM", "Shopping At South Massi Street"],
+      ["DAY 1 . 08:00 PM", "Return To The Hotel"],
+      ["DAY 2 · 08:00 AM", "Breakfast at the hotel"],
+      ["DAY 2 · 09:00 AM", "Visit Adavinainar Dam surroundings"],
+      ["DAY 2 · 12:30 PM", "Explore scenic viewpoints"],
+      ["DAY 2 · 01:30 PM", "Lunch break (traveller's own expense)"],
+      ["DAY2 . 03:00 PM", "Go To Thrill Park"],
+      ["DAY 2 · 06:00 PM", "Return journey and drop-off"]
     ]
   },
+
   {
     id: 3,
     name: "Sacred Temple Trail",
+    ...commonTravelDetails,
     category: "Temples",
     tag: "CULTURAL PICK",
     duration: "1 Day",
     price: 1599,
-    rating: "4.9",
     location: "Tenkasi",
-    people: "2–10 People",
-    image: "photo3.avif",
-    description: "Experience the spiritual charm, ancient architecture and cultural heritage of Tenkasi.",
-    highlights: ["Kasi Viswanathar Temple", "Kuttralanathar Temple", "Chitra Sabha Area", "Heritage Walk"],
+  
+    image: "/newtemp1.jpg",
+    gallery: [
+    "newtemp.jpg",
+    "newtemp1.jpg",
+    "newtemp2.avif"
+  ],
+    description:
+      "Discover Tenkasi's spiritual heritage with convenient pickup, hotel fresh-up, breakfast and visits to famous temples.",
+    highlights: [
+     
+      "Kasi Viswanathar Temple",
+      "Kuttralanathar Temple",
+      "Temple Heritage",
+      "Chitra Sabha Area"
+
+    ],
     itinerary: [
-      ["08:00 AM", "Meet at Tenkasi"],
+      ["06:30 AM", "Pickup from the selected pickup point"],
+      ["07:15 AM", "Reach the hotel and fresh-up"],
+      ["08:00 AM", "Breakfast provided at the hotel"],
       ["09:00 AM", "Visit Kasi Viswanathar Temple"],
-      ["11:30 AM", "Explore heritage streets"],
+      ["11:00 AM", "Explore nearby heritage streets"],
+      ["01:00 PM", "Lunch break (traveller's own expense)"],
       ["02:00 PM", "Visit Kuttralanathar Temple"],
-      ["04:30 PM", "Return to Tenkasi"]
+      ["03:30 PM", "Explore Chitra Sabha area, subject to visiting hours"],
+      ["07:00 PM", "Return journey and drop-off"]
     ]
   },
+
   {
     id: 4,
     name: "Hidden Gems Discovery",
+    ...commonTravelDetails,
     category: "Hidden Gems",
     tag: "OFFBEAT ESCAPE",
     duration: "1 Day",
     price: 1899,
-    rating: "4.7",
     location: "Gundar",
-    people: "2–6 People",
-    image: "photo4.avif",
-    description: "Discover peaceful reservoir surroundings, scenic roads and lesser-known natural escapes.",
-    highlights: ["Gundar Reservoir", "Adavinainar Dam Area", "Scenic Stops", "Picnic Time"],
+  
+    image: "/photo4.avif",
+    gallery: [
+    "newdam.avif",
+    "newdam1.avif",
+    "newdam2.jpg"
+  ],
+    description:
+      "Explore peaceful reservoirs and hidden natural surroundings with pickup, hotel fresh-up and breakfast.",
+    highlights: [
+     
+      "Gundar Reservoir",
+      "Adavinainar Dam",
+      "Scenic Photography",
+      "Scenic Photo Spot"
+    ],
     itinerary: [
-      ["08:00 AM", "Departure from Tenkasi"],
-      ["09:30 AM", "Explore Gundar surroundings"],
-      ["12:00 PM", "Lunch break"],
-      ["02:00 PM", "Visit Adavinainar Dam area"],
-      ["04:30 PM", "Return to Tenkasi"]
+      ["06:30 AM", "Pickup from the selected pickup point"],
+      ["07:15 AM", "Hotel arrival and fresh-up"],
+      ["08:00 AM", "Breakfast provided at the hotel"],
+      ["09:00 AM", "Start towards Gundar"],
+      ["10:00 AM", "Explore Gundar Reservoir surroundings"],
+      ["12:00 PM", "Enjoy scenic photo spots"],
+      ["01:00 PM", "Lunch break (traveller's own expense)"],
+      ["02:30 PM", "Visit Adavinainar Dam surroundings"],
+      ["04:30 PM", "Relax and enjoy the natural scenery"],
+      ["06:30 PM", "Return journey and drop-off"]
     ]
   },
+
   {
     id: 5,
     name: "Tenkasi Family Holiday",
+    ...commonTravelDetails,
     category: "Family",
     tag: "FAMILY SPECIAL",
     duration: "2 Days",
     price: 4299,
-    rating: "4.8",
     location: "Tenkasi District",
-    people: "4–10 People",
-    image: "photo5.avif",
-    description: "Enjoy a relaxed family holiday with sightseeing, nature stops and memorable experiences.",
-    highlights: ["Family Sightseeing", "Nature Stops", "Temple Visit Option", "Flexible Schedule"],
+  
+    image: "/fam2.jpg",
+    gallery: [
+    "thril.jpg",
+    "fivefalls.jpg",
+    "newdam2.jpg"
+  ],
+    description:
+      "Enjoy a comfortable family getaway with hotel fresh-up, breakfast, temple visits and relaxing nature experiences.",
+    highlights: [
+     
+      "Family Sightseeing",
+      "Temple Visit",
+      "Nature Experiences",
+      "Thrill Park"
+    ],
     itinerary: [
-      ["DAY 1 · 09:00 AM", "Tenkasi town sightseeing"],
-      ["DAY 1 · 12:00 PM", "Heritage and temple visit"],
-      ["DAY 1 · 04:00 PM", "Scenic drive"],
-      ["DAY 2 · 09:00 AM", "Optional waterfall visit"],
-      ["DAY 2 · 03:00 PM", "Return journey"]
+      ["DAY 1 · 06:30 AM", "Pickup from the selected pickup point"],
+      ["DAY 1 · 07:15 AM", "Hotel arrival and fresh-up"],
+      ["DAY 1 · 08:00 AM", "Breakfast provided at the hotel"],
+      ["DAY 1 · 09:00 AM", "Visit Kasi Viswanathar Temple"],
+      ["DAY 1 · 11:00 AM", "Explore Tenkasi town"],
+      ["DAY 1 · 01:00 PM", "Lunch break (traveller's own expense)"],
+      ["DAY 1 · 03:00 PM", "Enjoy a relaxing scenic drive"],
+      ["DAY 1 . 05:00 PM", "Shopping At South Massi Street"],
+      ["DAY 1 . 08:00 PM", "Return To The Hotel"],
+      ["DAY 2 · 08:00 AM", "Breakfast at the hotel"],
+      ["DAY 2 · 09:00 AM", "Family visit to Courtallam Main Falls"],
+      ["DAY 2 · 12:00 PM", "Explore nearby attractions"],
+      ["DAY 2 · 01:00 PM", "Lunch break (traveller's own expense)"],
+       ["DAY2 . 03:00 PM", "Go To Thrill Park"],
+       ["DAY2 . 05:30 PM", "Explore Near By Shopping Street"],
+      ["DAY 2 · 06:30 PM", "Return journey and drop-off"]
     ]
   },
+
   {
     id: 6,
     name: "The Grand Tenkasi Circuit",
+    ...commonTravelDetails,
     category: "All-in-One",
     tag: "ULTIMATE EXPERIENCE",
     duration: "3 Days",
     price: 6499,
-    rating: "5.0",
     location: "Tenkasi District",
-    people: "2–8 People",
-    image: "photo6.avif",
-    description: "One unforgettable journey through waterfalls, sacred temples, mountain views and hidden escapes.",
-    highlights: ["Courtallam", "Temple Heritage", "Dam Views", "Nature Experiences"],
+    
+    image: "/grand1.jpg",
+    gallery: [
+    "fun1.jpg",
+    "newtemp1.jpg",
+    "newfall5.jpg"
+  ],
+    description:
+      "Experience the best of Tenkasi in three days with hotel fresh-up, breakfast, temple heritage, waterfalls and beautiful nature destinations.",
+    highlights: [
+      
+      "Courtallam Waterfalls",
+      "Temple Heritage",
+      "Dam Views",
+      "Nature Experiences"
+    ],
     itinerary: [
-      ["DAY 1", "Tenkasi town and temple heritage"],
-      ["DAY 2", "Explore Courtallam waterfall region"],
-      ["DAY 3", "Scenic dam views and return journey"]
+      ["DAY 1 · 06:30 AM", "Pickup from the selected pickup point"],
+      ["DAY 1 · 07:15 AM", "Hotel arrival and fresh-up"],
+      ["DAY 1 · 08:00 AM", "Breakfast provided at the hotel"],
+      ["DAY 1 · 09:00 AM", "Visit Kasi Viswanathar Temple"],
+      ["DAY 1 · 11:00 AM", "Explore Tenkasi town and heritage attractions"],
+      ["DAY 1 · 01:00 PM", "Lunch break (traveller's own expense)"],
+      ["DAY 1 · 03:00 PM", "Enjoy nearby scenic surroundings"],
+      ["DAY 1 .05:00 PM","Explore Games In Hyber Market"],
+      ["DAY 1 . 08:00 PM", "Return To The Hotel"],
+      ["DAY 2 · 08:00 AM", "Breakfast at the hotel"],
+      ["DAY 2 · 09:00 AM", "Visit Courtallam Main Falls"],
+      ["DAY 2 · 11:00 AM", "Explore Five Falls"],
+      ["DAY 2 · 01:00 PM", "Lunch break (traveller's own expense)"],
+      ["DAY 2 · 03:00 PM", "Visit Old Courtallam, subject to access"],
+      ["DAY 2 . 04:30 PM", "Explore Tiger Falls"],
+      ["DAY 2 . 06:00 PM","Explore Shopping Area's Near By Main Falls"],
+      ["DAY 2 . 08:00 PM", "Return To The Hotel"],
+      ["DAY 3 · 08:00 AM", "Breakfast at the hotel"],
+      ["DAY 3 · 09:00 AM", "Explore Gundar Dam surroundings"],
+      ["DAY 3 · 12:00 PM", "Visit Adavinainar Dam surroundings"],
+      ["DAY 3 · 01:30 PM", "Lunch break (traveller's own expense)"],
+      ["DAY 3 . 03:00 PM ","Explore Mekkarai Surroundings "],
+      ["DAY 3 · 06:00 PM", "Return journey and drop-off"]
     ]
   }
 ];
@@ -148,29 +331,24 @@ export default function Tourpackages() {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(null);
   const [saved, setSaved] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
+
   // Prevent background scrolling when package modal is open
+ 
+// Prevent background scrolling when package modal is open
 useEffect(() => {
   if (selected) {
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
   }
 
   return () => {
     document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
   };
 }, [selected]);
-
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    date: "",
-    travellers: "2",
-    packageName: "",
-    message: ""
-  });
 
   const filteredPackages = useMemo(() => {
     const keyword = search.toLowerCase().trim();
@@ -188,23 +366,6 @@ useEffect(() => {
       return categoryMatch && searchMatch;
     });
   }, [category, search]);
-
-  const updateForm = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const goToEnquiry = (packageName = "") => {
-    setForm((old) => ({ ...old, packageName }));
-    setSelected(null);
-    document.getElementById("tp-enquiry")?.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
-
-  const submitEnquiry = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
 
   const toggleSaved = (id) => {
     setSaved((old) =>
@@ -231,8 +392,9 @@ useEffect(() => {
         }
 
         .tp-hero {
-  min-height: 680px;
-  height: 560px;
+  min-height: 500px;
+  height: 400;
+  padding-top: 40px;
 }
 
         .tp-hero-video {
@@ -307,7 +469,35 @@ useEffect(() => {
           from { opacity: 0; transform: translateY(20px) scale(.98); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
+/* DESTINATION GALLERY FLOATING ANIMATION */
 
+.tp-gallery-image {
+  cursor: pointer;
+  animation: galleryFloat 3s ease-in-out infinite;
+  transition: box-shadow 0.4s ease;
+}
+
+.tp-gallery-float-2 {
+  animation-delay: 0.5s;
+}
+
+.tp-gallery-float-3 {
+  animation-delay: 1s;
+}
+
+.tp-gallery-image:hover {
+  box-shadow: 0 18px 30px rgba(33, 75, 52, 0.2);
+}
+
+@keyframes galleryFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
         @media (prefers-reduced-motion: reduce) {
           .tp-page *, .tp-page *::before, .tp-page *::after {
             animation: none !important;
@@ -319,20 +509,6 @@ useEffect(() => {
       {/* HERO SECTION */}
 
       <section className="tp-hero relative isolate flex items-center bg-[#123b29] text-white">
-
-        <video
-          className="tp-hero-video -z-20"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="photo2.avif"
-        >
-          <source
-            src="https://videos.pexels.com/video-files/3129595/3129595-hd_1920_1080_25fps.mp4"
-            type="video/mp4"
-          />
-        </video>
 
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#092619]/95 via-[#123b29]/75 to-[#123b29]/25" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#102c20]/60 to-transparent" />
@@ -367,12 +543,7 @@ useEffect(() => {
                 Explore packages ↗
               </a>
 
-              <a
-                href="/planyourtrip"
-                className="tp-button rounded-full border border-white/40 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur"
-              >
-                Trip Type →
-              </a>
+              
             </div>
 
             <div className="mt-12 flex flex-wrap gap-9 border-t border-white/20 pt-7">
@@ -624,7 +795,7 @@ useEffect(() => {
                     <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#89958a]">
                       <span>◷ {item.duration}</span>
                       <span>♧ {item.people}</span>
-                      <span className="text-[#ad823e]">★ {item.rating}</span>
+            
                     </div>
 
                     <p className="mt-5 min-h-[66px] text-sm leading-6 text-[#758276]">
@@ -683,11 +854,6 @@ useEffect(() => {
               </button>
             </div>
           )}
-
-          <p className="mt-8 text-center text-xs leading-6 text-[#8a998c]">
-            Prices are illustrative starting estimates per person.
-            Final rates, inclusions and destination access must be confirmed.
-          </p>
         </div>
       </section>
 
@@ -764,182 +930,7 @@ useEffect(() => {
       </section>
       
 
-      {/* ENQUIRY FORM */}
-
-      <section id="tp-enquiry" className="scroll-mt-16 bg-[#eaf1e3] py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[.85fr_1.15fr] lg:px-12">
-
-          <div className="flex flex-col justify-center">
-            <p className="text-xs font-extrabold uppercase tracking-[.25em] text-[#829b70]">
-              Let's plan something beautiful
-            </p>
-
-            <h2 className="tp-heading mt-5 text-4xl leading-tight text-[#1d422e] sm:text-5xl">
-              Your journey begins with
-              <span className="italic text-[#829b70]"> one hello.</span>
-            </h2>
-
-            <p className="mt-6 max-w-md text-sm leading-8 text-[#718174]">
-              Tell us your travel plans. Share your preferred date, group size
-              and destination. Let's start planning your Tenkasi experience.
-            </p>
-
-            <div className="mt-9 space-y-4 text-sm text-[#607565]">
-              <p>✦ Choose your favourite package</p>
-              <p>✦ Share your travel date</p>
-              <p>✦ Ask about a custom trip</p>
-            </div>
-          </div>
-
-          <form
-            onSubmit={submitEnquiry}
-            className="rounded-[2rem] border border-[#dce6d7] bg-white p-6 shadow-xl sm:p-9"
-          >
-
-            {submitted ? (
-              <div className="py-12 text-center">
-                <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#e8f3dd] text-3xl text-[#315d3e]">
-                  ✓
-                </div>
-                <h3 className="tp-heading mt-6 text-3xl text-[#214b34]">
-                  Thank you, {form.name}!
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-[#7b897d]">
-                  Your demo enquiry has been submitted on this page.
-                  Connect a backend or form service to receive actual enquiries.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setSubmitted(false)}
-                  className="mt-7 rounded-full bg-[#214b34] px-7 py-3 text-sm font-bold text-white"
-                >
-                  Send another enquiry
-                </button>
-              </div>
-            ) : (
-              <>
-                <p className="text-xs font-extrabold uppercase tracking-[.2em] text-[#8aa07f]">
-                  Trip enquiry
-                </p>
-
-                <h3 className="tp-heading mt-2 text-3xl text-[#214b34]">
-                  Tell us your plan.
-                </h3>
-
-                <div className="mt-8 grid gap-5 sm:grid-cols-2">
-
-                  <label className="text-xs font-bold text-[#607565]">
-                    Your name *
-                    <input
-                      required
-                      name="name"
-                      value={form.name}
-                      onChange={updateForm}
-                      placeholder="Enter your name"
-                      className="tp-input"
-                    />
-                  </label>
-
-                  <label className="text-xs font-bold text-[#607565]">
-                    Mobile number *
-                    <input
-                      required
-                      name="phone"
-                      type="tel"
-                      pattern="[0-9+ ()-]{8,18}"
-                      value={form.phone}
-                      onChange={updateForm}
-                      placeholder="Your contact number"
-                      className="tp-input"
-                    />
-                  </label>
-
-                  <label className="text-xs font-bold text-[#607565]">
-                    Email address
-                    <input
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={updateForm}
-                      placeholder="you@example.com"
-                      className="tp-input"
-                    />
-                  </label>
-
-                  <label className="text-xs font-bold text-[#607565]">
-                    Travel date *
-                    <input
-                      required
-                      name="date"
-                      type="date"
-                      min={new Date().toISOString().split("T")[0]}
-                      value={form.date}
-                      onChange={updateForm}
-                      className="tp-input"
-                    />
-                  </label>
-
-                  <label className="text-xs font-bold text-[#607565]">
-                    Number of travellers
-                    <select
-                      name="travellers"
-                      value={form.travellers}
-                      onChange={updateForm}
-                      className="tp-input"
-                    >
-                      {["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"].map((n) => (
-                        <option key={n} value={n}>{n}</option>
-                      ))}
-                    </select>
-                  </label>
-
-                  <label className="text-xs font-bold text-[#607565]">
-                    Select package
-                    <select
-                      name="packageName"
-                      value={form.packageName}
-                      onChange={updateForm}
-                      className="tp-input"
-                    >
-                      <option value="">Choose a package</option>
-                      {packages.map((item) => (
-                        <option key={item.id} value={item.name}>
-                          {item.name}
-                        </option>
-                      ))}
-                      <option value="Custom trip">Custom trip</option>
-                    </select>
-                  </label>
-
-                  <label className="text-xs font-bold text-[#607565] sm:col-span-2">
-                    Additional message
-                    <textarea
-                      rows="4"
-                      name="message"
-                      value={form.message}
-                      onChange={updateForm}
-                      placeholder="Tell us about your travel preferences..."
-                      className="tp-input resize-y"
-                    />
-                  </label>
-
-                </div>
-
-                <button
-                  type="submit"
-                  className="tp-button mt-7 w-full rounded-full bg-[#214b34] px-7 py-4 text-sm font-extrabold text-white shadow-lg"
-                >
-                  Submit your enquiry ↗
-                </button>
-
-                <p className="mt-4 text-center text-[10px] text-[#9aa79b]">
-                  Demo form. Connect a backend to receive and store enquiries.
-                </p>
-              </>
-            )}
-          </form>
-        </div>
-      </section>
+     
 
       {/* FOOTER */}
 
@@ -965,14 +956,14 @@ useEffect(() => {
         </div>
       </footer>
 
-      {/* PACKAGE DETAILS MODAL */}
+ 
 
       
       {/* PACKAGE DETAILS MODAL */}
 
       {selected && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#071b12]/80 p-3 backdrop-blur-sm sm:p-6"
+          className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-[#071b12]/80 px-3 pb-6 pt-24 backdrop-blur-sm sm:px-6 sm:pb-6 sm:pt-28"
           onMouseDown={(e) => {
             if (e.target === e.currentTarget) setSelected(null);
           }}
@@ -991,18 +982,16 @@ useEffect(() => {
                 alt={selected.name}
                 className="h-full w-full object-cover"
               />
+<div className="absolute inset-0 z-0 bg-gradient-to-t from-[#071b12]/90 via-black/20 to-black/10" />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071b12]/90 via-black/20 to-black/10" />
-
-              <button
-                type="button"
-                onClick={() => setSelected(null)}
-                className="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full border border-white/30 bg-black/40 text-2xl text-white backdrop-blur"
-                aria-label="Close details"
-              >
-                ×
-              </button>
-
+<button
+  type="button"
+  onClick={() => setSelected(null)}
+  className="absolute right-5 top-5 z-30 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/70 bg-[#071b12] text-3xl font-bold leading-none text-white shadow-xl transition duration-300 hover:scale-110 hover:bg-[#315b42]"
+  aria-label="Close details"
+>
+  <span className="block -translate-y-[1px]">×</span>
+</button>
               <div className="absolute bottom-7 left-6 right-6 text-white sm:left-9">
                 <span className="inline-block rounded-full bg-[#d5edb7] px-4 py-2 text-[10px] font-extrabold uppercase tracking-widest text-[#214b34]">
                   {selected.tag}
@@ -1017,7 +1006,7 @@ useEffect(() => {
                 </h3>
 
                 <p className="mt-3 text-sm text-white/80">
-                  📍 {selected.location} · ★ {selected.rating}/5
+                  📍 {selected.location} 
                 </p>
               </div>
             </div>
@@ -1032,69 +1021,133 @@ useEffect(() => {
 
                 {/* OVERVIEW */}
 
-                <section>
-                  <p className="text-[10px] font-extrabold uppercase tracking-[.22em] text-[#91a47f]">
-                    Discover this journey
-                  </p>
+{/* PACKAGE OVERVIEW + EXPERIENCE */}
 
-                  <h4 className="tp-heading mt-2 text-3xl text-[#214b34]">
-                    Package overview
-                  </h4>
+<section className="mt-8 overflow-hidden rounded-3xl border border-[#e3eadc] bg-gradient-to-br from-[#f8faf3] via-white to-[#edf4e8] p-6 sm:p-8 shadow-sm">
 
-                  <p className="mt-4 text-sm leading-8 text-[#718174]">
-                    {selected.description}
-                  </p>
+  {/* HEADER */}
+  <div className="text-center">
+    <span className="inline-block rounded-full bg-[#e8f0e3] px-4 py-2 text-[10px] font-extrabold uppercase tracking-[.22em] text-[#64835b]">
+      Discover this journey
+    </span>
 
-                  <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {[
-                      ["◷", "Duration", selected.duration],
-                      ["♧", "Group size", selected.people],
-                      ["⌖", "Destination", selected.location],
-                      ["★", "Guest rating", `${selected.rating}/5`]
-                    ].map(([icon, label, value]) => (
-                      <div
-                        key={label}
-                        className="rounded-2xl border border-[#e1e9dc] bg-white p-4"
-                      >
-                        <span className="text-xl text-[#829b70]">{icon}</span>
-                        <p className="mt-3 text-[10px] font-bold uppercase tracking-wider text-[#9aa79b]">
-                          {label}
-                        </p>
-                        <p className="mt-1 text-xs font-extrabold text-[#315d3e]">
-                          {value}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </section>
+    <h4 className="tp-heading mt-4 text-3xl font-bold text-[#214b34]">
+      Your Journey, Beautifully Planned
+    </h4>
 
-                {/* HIGHLIGHTS */}
+    <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#718174]">
+      {selected.description}
+    </p>
+  </div>
 
-                <section className="mt-10">
-                  <p className="text-[10px] font-extrabold uppercase tracking-[.22em] text-[#91a47f]">
-                    What makes it special
-                  </p>
+  {/* TRIP DETAILS */}
+  <div className="mx-auto mt-8 grid max-w-xl grid-cols-2 gap-4">
 
-                  <h4 className="tp-heading mt-2 text-2xl text-[#214b34]">
-                    Experience highlights
-                  </h4>
+    <div className="group rounded-2xl border border-[#e1e9dc] bg-white p-5 text-center shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg">
+      <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#edf3e8] text-2xl text-[#64835b] transition-transform duration-500 group-hover:rotate-12">
+        ◷
+      </div>
 
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    {selected.highlights.map((item, index) => (
-                      <div
-                        key={item}
-                        className="flex items-center gap-3 rounded-xl bg-[#edf3e8] p-4"
-                      >
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-sm text-[#64835b]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-sm font-semibold text-[#557354]">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </section>
+      <p className="mt-3 text-[10px] font-bold uppercase tracking-widest text-[#9aa79b]">
+        Duration
+      </p>
+
+      <p className="mt-2 text-sm font-extrabold text-[#315d3e]">
+        {selected.duration}
+      </p>
+    </div>
+
+    <div className="group rounded-2xl border border-[#e1e9dc] bg-white p-5 text-center shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-lg">
+      <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#edf3e8] text-2xl text-[#64835b] transition-transform duration-500 group-hover:rotate-12">
+        ⌖
+      </div>
+
+      <p className="mt-3 text-[10px] font-bold uppercase tracking-widest text-[#9aa79b]">
+        Destination
+      </p>
+
+      <p className="mt-2 text-sm font-extrabold text-[#315d3e]">
+        {selected.location}
+      </p>
+    </div>
+
+  </div>
+
+  {/* DIVIDER */}
+  <div className="my-9 flex items-center gap-4">
+    <div className="h-px flex-1 bg-[#dce7d5]"></div>
+    <span className="text-xl text-[#829b70]">✦</span>
+    <div className="h-px flex-1 bg-[#dce7d5]"></div>
+  </div>
+
+  {/* EXPERIENCE HIGHLIGHTS */}
+  <div>
+    <div className="text-center">
+      <p className="text-[10px] font-extrabold uppercase tracking-[.22em] text-[#91a47f]">
+        Little moments, lasting memories
+      </p>
+
+      <h4 className="tp-heading mt-2 text-2xl font-bold text-[#214b34]">
+        Experience Highlights
+      </h4>
+
+      <p className="mt-2 text-xs text-[#829183]">
+        Explore what makes this trip special
+      </p>
+    </div>
+
+    <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      {(selected.highlights || []).map((item, index) => (
+        <div
+          key={`${item}-${index}`}
+          style={{ animationDelay: `${index * 100}ms` }}
+          className="group flex items-center gap-4 rounded-2xl border border-[#e1e9dc] bg-white/90 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#9aaf8d] hover:shadow-md"
+        >
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#edf3e8] text-xs font-extrabold text-[#64835b] transition-all duration-300 group-hover:bg-[#315d3e] group-hover:text-white">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <span className="text-sm font-semibold leading-6 text-[#557354]">
+            {item}
+          </span>
+
+          <span className="ml-auto text-[#91a47f] transition-transform duration-300 group-hover:translate-x-1">
+            
+          </span>
+        </div>
+      ))}
+    </div>
+
+    {(!selected.highlights || selected.highlights.length === 0) && (
+      <p className="mt-5 text-center text-sm text-[#829183]">
+        More exciting experiences coming soon!
+      </p>
+    )}
+  </div>
+
+</section>
+
+                {/* PHOTO GALLERY */}
+<section className="mt-10">
+  <p className="text-[10px] font-extrabold uppercase tracking-[.22em] text-[#91a47f]">
+    Explore the destination
+  </p>
+
+  <h4 className="tp-heading mt-2 text-2xl text-[#214b34]">
+    Destination Gallery
+  </h4>
+
+  <div className="mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3">
+  {(selected.gallery || [selected.image]).map((photo, index) => (
+    <img
+      key={index}
+      src={`/${photo}`}
+      alt={`${selected.name} view ${index + 1}`}
+      className={`tp-gallery-image tp-gallery-float-${index + 1} h-36 w-full rounded-xl object-cover`}
+    />
+  ))}
+</div>
+</section>
 
                 {/* ITINERARY */}
 
@@ -1128,85 +1181,109 @@ useEffect(() => {
                     ))}
                   </div>
                 </section>
+              
 
-                {/* INCLUSIONS */}
 
-                <section className="mt-10 rounded-2xl border border-[#dce9d5] bg-[#f0f6eb] p-5 sm:p-6">
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-xl text-[#52794b]">
-                      ✓
-                    </span>
-                    <div>
-                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-[#829b70]">
-                        What you get
-                      </p>
-                      <h4 className="tp-heading text-2xl text-[#214b34]">
-                        What's included?
-                      </h4>
-                    </div>
-                  </div>
 
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    {[
-                      "Planned sightseeing itinerary",
-                      "Listed destination visits",
-                      "Trip planning assistance",
-                      "Basic travel guidance",
-                      "Suggested photo stops",
-                      "Group travel coordination"
-                    ].map((item) => (
-                      <div key={item} className="flex gap-3 text-sm text-[#607565]">
-                        <span className="font-extrabold text-[#6c965d]">✓</span>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
 
-                  <p className="mt-5 border-t border-[#dce8d4] pt-4 text-[10px] leading-6 text-[#879487]">
-                    These are proposed package inclusions. Transport, tickets,
-                    meals and other services are included only if confirmed
-                    in the final booking.
-                  </p>
-                </section>
 
-                {/* EXCLUSIONS */}
+{/* TRAVEL ARRANGEMENTS */}
 
-                <section className="mt-5 rounded-2xl border border-[#eee3d8] bg-[#fbf7f1] p-5 sm:p-6">
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-xl text-[#ad8057]">
-                      ×
-                    </span>
-                    <div>
-                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-[#ad987e]">
-                        Know before booking
-                      </p>
-                      <h4 className="tp-heading text-2xl text-[#72563e]">
-                        What's not included?
-                      </h4>
-                    </div>
-                  </div>
+<section className="mt-10">
 
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    {[
-                      "Personal shopping expenses",
-                      "Food and refreshments",
-                      "Entry tickets unless specified",
-                      "Private vehicle upgrades",
-                      "Extra activities outside the itinerary",
-                      "Personal travel insurance"
-                    ].map((item) => (
-                      <div key={item} className="flex gap-3 text-sm text-[#806e5c]">
-                        <span className="font-bold text-[#b28c65]">×</span>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+  <p className="text-[10px] font-extrabold uppercase tracking-[.22em] text-[#91a47f]">
+    Plan your travel
+  </p>
 
-                  <p className="mt-5 border-t border-[#eee3d8] pt-4 text-[10px] leading-6 text-[#9b8976]">
-                    Anything not specifically listed under confirmed inclusions
-                    should be treated as an additional expense.
-                  </p>
-                </section>
+  <h4 className="tp-heading mt-2 text-2xl text-[#214b34]">
+    Travel Arrangements
+  </h4>
+
+  <p className="mt-3 text-sm leading-7 text-[#718174]">
+    Choose your convenient pickup location for a comfortable journey.
+  </p>
+
+  {/* HORIZONTAL IMAGE SCROLL */}
+
+  <div
+    id="pickup-image-slider"
+    className="mt-5 flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-5"
+    style={{ scrollbarWidth: "thin" }}
+  >
+
+    {pickupPointImages.map((point) => (
+
+      <div
+        key={point.id}
+        id={`pickup-${point.id}`}
+        className="w-[320px] min-w-[280px] shrink-0 snap-center overflow-hidden rounded-2xl border border-[#e1e9dc] bg-white shadow-md"
+      >
+
+        <img
+          src={point.image}
+          alt={point.name}
+          className="h-48 w-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src =
+              "";
+          }}
+        />
+
+        <div className="p-4">
+
+          <h5 className="font-bold text-[#426449]">
+            {point.name}
+          </h5>
+
+          <p className="mt-2 text-sm text-[#849184]">
+            {point.location}
+          </p>
+
+        </div>
+
+      </div>
+
+    ))}
+
+  </div>
+
+  {/* PICKUP POINT BUTTONS */}
+
+  <div className="mt-5 rounded-xl border border-[#e5ecdf] bg-white p-5">
+
+    <h5 className="font-bold text-[#426449]">
+      Available Pickup Points
+    </h5>
+
+    <div className="mt-4 flex flex-wrap gap-2">
+
+      {pickupPointImages.map((point) => (
+
+        <button
+          key={point.id}
+          type="button"
+          onClick={() => {
+            document
+              .getElementById(`pickup-${point.id}`)
+              ?.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
+              });
+          }}
+          className="rounded-full bg-[#edf3e8] px-4 py-3 text-xs font-semibold text-[#557354] transition duration-300 hover:bg-[#214b34] hover:text-white"
+        >
+          {point.name}
+
+        </button>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
                 {/* TRAVEL TIPS */}
 
@@ -1313,7 +1390,7 @@ useEffect(() => {
                           {answer}
                         </p>
                       </details>
-                    ))}
+                    ))} 
                   </div>
                 </section>
 
@@ -1352,20 +1429,14 @@ useEffect(() => {
                     <span className="font-bold text-[#47634b]">{selected.duration}</span>
                   </div>
 
-                  <div className="flex justify-between gap-2">
-                    <span>Group size</span>
-                    <span className="font-bold text-[#47634b]">{selected.people}</span>
-                  </div>
+                  
 
                   <div className="flex justify-between gap-2">
                     <span>Category</span>
                     <span className="text-right font-bold text-[#47634b]">{selected.category}</span>
                   </div>
 
-                  <div className="flex justify-between gap-2">
-                    <span>Rating</span>
-                    <span className="font-bold text-[#ad823e]">★ {selected.rating}/5</span>
-                  </div>
+                 
                 </div>
 
                 <div className="my-6 border-t border-[#d8e3d2]" />
@@ -1378,14 +1449,12 @@ useEffect(() => {
                     Tell us your preferred travel date and group size. We can discuss a suitable plan.
                   </p>
                 </div>
-
-                <button
-                  type="button"
-                  onClick={() => goToEnquiry(selected.name)}
-                  className="tp-button mt-5 w-full rounded-full bg-[#214b34] px-4 py-4 text-xs font-extrabold text-white shadow-lg"
-                >
-                  Enquire about this trip ↗
-                </button>
+             <Link
+  to="/Planyourtrip"
+  className="tp-button mt-5 flex w-full items-center justify-center rounded-full bg-[#214b34] px-4 py-4 text-xs font-extrabold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-[#315b42]"
+>
+  Trip Type ↗
+</Link>
 
                 <button
                   type="button"
@@ -1394,6 +1463,7 @@ useEffect(() => {
                 >
                   {saved.includes(selected.id) ? "♥ Saved to favourites" : "♡ Save this package"}
                 </button>
+                
 
                 <p className="mt-4 text-center text-[10px] leading-5 text-[#8b9a8b]">
                   Prices are estimates. Final rates, availability, inclusions and booking conditions must be confirmed.
@@ -1404,14 +1474,30 @@ useEffect(() => {
 
             {/* MODAL BOTTOM */}
 
-            <div className="border-t border-[#e5ecdf] bg-[#f0f5eb] px-6 py-5 text-center">
-              <p className="tp-heading text-xl text-[#315d3e]">
-                Make your next journey a beautiful memory.
-              </p>
-              <p className="mt-2 text-xs text-[#849184]">
-                Explore Tenkasi · Discover nature · Create memories
-              </p>
-            </div>
+            
+{/* MODAL BOTTOM */}
+
+<div className="flex flex-col items-center gap-5 border-t border-[#e5ecdf] bg-[#f0f5eb] px-6 py-6 text-center sm:flex-row sm:justify-between">
+
+  <div>
+    <p className="tp-heading text-xl text-[#315d3e]">
+      Make your next journey a beautiful memory.
+    </p>
+    <p className="mt-2 text-xs text-[#849184]">
+      Explore Tenkasi · Discover nature · Create memories
+    </p>
+  </div>
+
+  <button
+    type="button"
+    onClick={() => setSelected(null)}
+    className="flex items-center justify-center gap-2 rounded-full bg-[#214b34] px-8 py-3.5 text-sm font-bold text-white shadow-md transition duration-300 hover:-translate-y-1 hover:bg-[#315b42] hover:shadow-lg"
+  >
+    ← Back to Packages
+  </button>
+
+</div>
+
 
           </div>
         </div>

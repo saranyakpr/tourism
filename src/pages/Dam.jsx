@@ -13,7 +13,7 @@ const hiddenPlaces = [
       "Discover a peaceful reservoir surrounded by green hills and beautiful natural scenery.",
     image:
       "hid4.jpg",
-    number: "01",
+    
   },
   {
     name: "Mekkarai",
@@ -23,7 +23,7 @@ const hiddenPlaces = [
       "A scenic countryside destination with mountain views, fresh air and peaceful surroundings.",
     image:
       "adavi.jpg",
-    number: "02",
+   
   },
   {
     name: "Gundar Dam",
@@ -33,7 +33,7 @@ const hiddenPlaces = [
       "Enjoy the charm of calm waters, green landscapes and the beauty of the Western Ghats.",
     image:
       "hid3.avif",
-    number: "03",
+   
   },
   {
     name: "Thenmalai Dam",
@@ -43,7 +43,7 @@ const hiddenPlaces = [
       "Explore beautiful hill surroundings and experience the peaceful charm of this region.",
     image:
       "hid6.jpg",
-    number: "04",
+    
   },
 ];
 
@@ -249,6 +249,189 @@ export default function Dam() {
           </div>
         </div>
       </section>
+
+{/* BEST TIME TO VISIT */}
+<section className="relative overflow-hidden bg-[#f7f8ef] px-6 py-20 sm:px-10 lg:px-20">
+
+  <style>
+    {`
+      @keyframes floatCard {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      .season-float {
+        animation: floatCard 5s ease-in-out infinite;
+      }
+
+      .season-float:nth-child(2) {
+        animation-delay: 0.8s;
+      }
+
+      .season-float:nth-child(3) {
+        animation-delay: 1.6s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .season-float {
+          animation: none;
+        }
+      }
+    `}
+  </style>
+
+  {/* Background Decorations */}
+  <div className="absolute -left-24 top-10 h-64 w-64 rounded-full bg-[#dce9c5]/40 blur-3xl" />
+  <div className="absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-[#dce9c5]/40 blur-3xl" />
+
+  <div className="relative z-10 mx-auto max-w-7xl">
+
+    {/* Heading */}
+    <div className="mb-16 text-center">
+
+      <p className="text-sm font-bold uppercase tracking-[4px] text-[#829b70]">
+        Plan Your Perfect Escape
+      </p>
+
+      <h2 className="mt-4 text-4xl font-bold text-[#294333] md:text-5xl">
+        Best Time to Visit
+      </h2>
+
+      <p className="mx-auto mt-5 max-w-2xl leading-8 text-[#788477]">
+        Discover the peaceful dams and scenic countryside
+        of Tenkasi in different seasons. Choose the right
+        time to enjoy nature, fresh air and beautiful landscapes.
+      </p>
+
+    </div>
+
+    {/* Season Cards */}
+    <div className="grid gap-8 md:grid-cols-3">
+
+      {/* CARD 1 */}
+      <article className="season-float rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          🌿
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#829b70]">
+          June – September
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Monsoon Greenery
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Southwest monsoon showers bring freshness to
+          the surrounding hills and countryside. Enjoy
+          the green landscapes and refreshing atmosphere
+          around the dams.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Green scenery and nature photography
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 2 */}
+      <article className="season-float rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          🌧️
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#829b70]">
+          October – December
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Rainy Landscape
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Northeast monsoon rains can refresh the reservoirs
+          and surrounding greenery. Rainfall may be heavy
+          during some days, so plan your visit after
+          checking the local weather.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Fresh landscapes and cloudy views
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 3 */}
+      <article className="season-float rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          ☀️
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#829b70]">
+          January – February
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Pleasant Exploration
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          With generally lower rainfall than the monsoon
+          months, this period is suitable for relaxed
+          sightseeing, exploring dam surroundings and
+          enjoying peaceful outdoor moments.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Comfortable sightseeing and peaceful visits
+          </p>
+        </div>
+
+      </article>
+
+    </div>
+
+    {/* Travel Tip */}
+    <div className="mt-12 rounded-2xl border border-[#dce6d2] bg-[#edf2e5] px-6 py-6 text-center">
+
+      <p className="font-bold text-[#315b42]">
+        ✦ Travel Tip
+      </p>
+
+      <p className="mx-auto mt-2 max-w-3xl text-sm leading-7 text-[#788477]">
+        Dam water levels and access conditions can change
+        depending on rainfall and reservoir operations.
+        Avoid visiting during heavy rain or restricted-access
+        periods, and check local updates before travelling.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
 
       {/* FLOATING IMAGE STRIP */}
       <section className="relative mx-auto max-w-7xl px-6 py-24">

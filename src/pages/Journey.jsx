@@ -280,9 +280,7 @@ export default function Journey() {
                   {temple.tag}
                 </div>
 
-                <div className="absolute right-7 top-6 text-5xl font-bold text-white/50">
-                  0{index + 1}
-                </div>
+                
 
                 <div className="absolute inset-x-0 bottom-0 p-8 text-white">
 
@@ -317,6 +315,187 @@ export default function Journey() {
           </div>
         </div>
       </section>
+
+{/* BEST TIME TO VISIT */}
+<section className="relative overflow-hidden bg-[#f8f7ef] px-6 py-24">
+
+  <style>{`
+    @keyframes templeSeasonFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .temple-season-card {
+      animation: templeSeasonFloat 5s ease-in-out infinite;
+    }
+
+    .temple-season-card:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .temple-season-card:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .temple-season-card {
+        animation: none;
+      }
+    }
+  `}</style>
+
+  {/* Background Decorations */}
+  <div className="absolute -left-24 top-10 h-64 w-64 rounded-full bg-[#e8d5a5]/20 blur-3xl" />
+  <div className="absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-[#e8d5a5]/20 blur-3xl" />
+
+  <div className="relative z-10 mx-auto max-w-7xl">
+
+    {/* Heading */}
+    <div className="mb-16 text-center">
+
+      <p className="text-sm font-bold uppercase tracking-[4px] text-[#a1844d]">
+        Plan Your Spiritual Journey
+      </p>
+
+      <h2 className="mt-4 font-serif text-4xl font-bold text-[#294333] md:text-5xl">
+        Best Time to Visit
+      </h2>
+
+      <p className="mx-auto mt-5 max-w-2xl leading-8 text-[#788477]">
+        Tenkasi's temples welcome visitors throughout the year.
+        Choose a season that suits your travel plans and enjoy
+        the region's spiritual beauty and cultural heritage.
+      </p>
+
+    </div>
+
+    {/* Season Cards */}
+    <div className="grid gap-8 md:grid-cols-3">
+
+      {/* CARD 1 */}
+      <article className="temple-season-card rounded-[28px] border border-[#e8e1cd] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f3edda] text-3xl">
+          ☀️
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#a1844d]">
+          January – February
+        </p>
+
+        <h3 className="mt-3 font-serif text-2xl font-bold text-[#294333]">
+          Pleasant Visits
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Enjoy temple visits during the relatively comfortable
+          weather. Explore historic architecture, peaceful
+          surroundings and sacred places at a relaxed pace.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f5f2e8] p-4">
+          <p className="text-sm font-bold text-[#806b3f]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Comfortable sightseeing and peaceful visits
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 2 */}
+      <article className="temple-season-card rounded-[28px] border border-[#e8e1cd] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f3edda] text-3xl">
+          🛕
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#a1844d]">
+          June – August
+        </p>
+
+        <h3 className="mt-3 font-serif text-2xl font-bold text-[#294333]">
+          Courtallam Season
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          This period attracts more visitors to Tenkasi during
+          the Courtallam season. Combine your temple visit with
+          the region's seasonal attractions and cultural
+          atmosphere.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f5f2e8] p-4">
+          <p className="text-sm font-bold text-[#806b3f]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Temple visits and seasonal sightseeing
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 3 */}
+      <article className="temple-season-card rounded-[28px] border border-[#e8e1cd] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#f3edda] text-3xl">
+          🌧️
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#a1844d]">
+          October – December
+        </p>
+
+        <h3 className="mt-3 font-serif text-2xl font-bold text-[#294333]">
+          Rainy Season
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Northeast monsoon showers can bring rainy days
+          to the region. Plan outdoor sightseeing carefully
+          and enjoy temple architecture and spiritual
+          experiences whenever the weather permits.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f5f2e8] p-4">
+          <p className="text-sm font-bold text-[#806b3f]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Calm temple visits between rainy days
+          </p>
+        </div>
+
+      </article>
+
+    </div>
+
+    {/* Travel Tip */}
+    <div className="mt-12 rounded-2xl border border-[#e8e1cd] bg-[#f0eee4] px-6 py-6 text-center">
+
+      <p className="font-bold text-[#806b3f]">
+        ✦ Travel Tip
+      </p>
+
+      <p className="mx-auto mt-2 max-w-3xl text-sm leading-7 text-[#788477]">
+        Temples can generally be visited throughout the year.
+        Check temple opening hours, special pooja timings
+        and local weather conditions before planning your trip.
+        Visit early in the morning or in the evening for a
+        more comfortable experience.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
 
       {/* HERITAGE GALLERY */}
       <section className="mx-auto max-w-7xl px-6 py-24">

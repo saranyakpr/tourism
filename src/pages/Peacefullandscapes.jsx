@@ -128,9 +128,7 @@ export default function Peacefullandscapes() {
                 <span className="absolute left-4 top-4 rounded-full bg-white/90 px-4 py-2 text-[10px] font-bold tracking-widest text-[#456448]">
                   {place.tag}
                 </span>
-                <span className="absolute bottom-4 right-4 text-4xl font-bold text-white/70">
-                  0{index + 1}
-                </span>
+                
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold">{place.name}</h3>
@@ -143,6 +141,189 @@ export default function Peacefullandscapes() {
           ))}
         </div>
       </section>
+
+{/* BEST TIME TO VISIT */}
+<section className="relative overflow-hidden bg-[#f7f8ef] px-6 py-24">
+
+  <style>{`
+    @keyframes landscapeFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .landscape-season-card {
+      animation: landscapeFloat 5s ease-in-out infinite;
+    }
+
+    .landscape-season-card:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .landscape-season-card:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .landscape-season-card {
+        animation: none;
+      }
+    }
+  `}</style>
+
+  {/* Background Decorations */}
+  <div className="absolute -left-24 top-10 h-64 w-64 rounded-full bg-[#dce9c5]/40 blur-3xl" />
+  <div className="absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-[#dce9c5]/40 blur-3xl" />
+
+  <div className="relative z-10 mx-auto max-w-7xl">
+
+    {/* Heading */}
+    <div className="mb-16 text-center">
+
+      <p className="text-sm font-bold uppercase tracking-[4px] text-[#78966b]">
+        Discover Nature in Every Season
+      </p>
+
+      <h2 className="mt-4 text-4xl font-bold text-[#294333] md:text-5xl">
+        Best Time to Visit
+      </h2>
+
+      <p className="mx-auto mt-5 max-w-2xl leading-8 text-[#718071]">
+        From golden sunflower fields to beautiful viewpoints
+        and peaceful dams, discover the best seasons to
+        experience the natural beauty of Tenkasi.
+      </p>
+
+    </div>
+
+    {/* Season Cards */}
+    <div className="grid gap-8 md:grid-cols-3">
+
+      {/* CARD 1 */}
+      <article className="landscape-season-card rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          🌻
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#78966b]">
+          June – August
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Sunflower Season
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Visit Sundarapandiyapuram to enjoy its beautiful
+          sunflower fields during the seasonal blooming
+          period. The surrounding countryside also offers
+          lovely green landscapes.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Sunflower photography and countryside views
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 2 */}
+      <article className="landscape-season-card rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          🌿
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#78966b]">
+          September – November
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Green Landscape
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Explore the scenic surroundings of Ottakal
+          Viewpoint and Anniyan Parai. Seasonal rainfall
+          can refresh the countryside and bring beautiful
+          natural views.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Scenic views and nature photography
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 3 */}
+      <article className="landscape-season-card rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          ☀️
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#78966b]">
+          December – February
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Peaceful Exploration
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Enjoy comfortable outdoor visits to Ottakal
+          Viewpoint, Anniyan Parai and Karuppanadhi Dam.
+          Take in the mountain scenery and peaceful
+          surroundings at a relaxed pace.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Viewpoint visits and relaxed sightseeing
+          </p>
+        </div>
+
+      </article>
+
+    </div>
+
+    {/* Travel Tip */}
+    <div className="mt-12 rounded-2xl border border-[#dce6d2] bg-[#edf2e5] px-6 py-6 text-center">
+
+      <p className="font-bold text-[#315b42]">
+        ✦ Travel Tip
+      </p>
+
+      <p className="mx-auto mt-2 max-w-3xl text-sm leading-7 text-[#788477]">
+        Sunflower blooming depends on the farmers' cultivation
+        schedule, so confirm the flowering status before visiting.
+        For Ottakal and Anniyan Parai, early morning and evening
+        are suitable for scenic views and photography. Check
+        rainfall and local access conditions before visiting dams
+        and viewpoints.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
 
       {/* CTA */}
       {/* BOTTOM CTA */}

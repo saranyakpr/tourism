@@ -11,7 +11,7 @@ const destinations = [
     title: "Into the Green",
     description:
       "Escape into peaceful hills, scenic landscapes and refreshing natural surroundings.",
-    places: ["Western Ghats", "Manimuthar"],
+    places: ["Western Ghats", "Kallaru"],
     image: "/intoo1.jpg",
    
   },
@@ -163,9 +163,9 @@ export default function Destination() {
           animation: heroReveal 1s ease both;
         }
 
-        .destination-hero-video {
-          animation: slowZoom 18s ease-in-out infinite alternate;
-        }
+       .destination-hero-video {
+  animation: none;
+}
 
         .destination-scroll {
           animation: floatDown 1.8s ease-in-out infinite;
@@ -217,16 +217,12 @@ export default function Destination() {
         </video>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-[#102c20]/45 to-[#102c20]/80" />
+        <div className="absolute inset-0 bg-black/10" />
 
         {/* Hero Content */}
         <div className="destination-hero-text relative z-10 mx-auto max-w-5xl px-5 text-center">
 
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-3 text-xs font-semibold tracking-[3px] text-white backdrop-blur-md sm:text-sm">
-            <span className="text-green-300">✦</span>
-            WELCOME TO TENKASI
-            <span className="text-green-300">✦</span>
-          </div>
+          
 
           <p className="mb-4 text-sm font-medium tracking-[5px] text-green-100 sm:text-base">
             WHERE NATURE MEETS PEACE

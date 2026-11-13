@@ -6,13 +6,13 @@ import Footer from"../component/Footer"
 const naturePlaces = [
  
   {
-    name: "Manimuthar",
-    location: "Near Ambasamudram",
+    name: "kallaru",
+    location: "Near kadayanallur",
     category: "Nature Retreat",
     description:
       "Explore the scenic surroundings of Manimuthar with its dam, hills and refreshing natural beauty.",
     image:
-      "manimuthar.jpg",
+      "kallaru.jpg",
     
   },
   {
@@ -232,6 +232,153 @@ export default function Intogreen() {
         </div>
       </section>
 
+      
+{/* BEST TIME TO VISIT */}
+<section className="relative overflow-hidden bg-[#f7f8ef] px-6 py-20 sm:px-10 lg:px-20">
+
+  <style>{`
+    @keyframes floatSeason {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .season-card {
+      animation: floatSeason 4s ease-in-out infinite;
+    }
+
+    .season-card:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .season-card:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .season-card {
+        animation: none;
+      }
+    }
+  `}</style>
+
+  <div className="pointer-events-none absolute -left-10 top-10 h-40 w-40 rounded-full bg-[#dcebd4] opacity-50 blur-3xl" />
+  <div className="pointer-events-none absolute -right-10 bottom-10 h-48 w-48 rounded-full bg-[#c5dfc0] opacity-40 blur-3xl" />
+
+  <div className="relative z-10 mx-auto max-w-6xl text-center">
+
+    <p className="text-xs font-extrabold uppercase tracking-[.25em] text-[#91a47f]">
+      Plan Your Visit
+    </p>
+
+    <h2 className="mt-3 text-3xl font-bold text-[#244333] sm:text-5xl">
+      Best Time to Visit
+    </h2>
+
+    <p className="mx-auto mt-5 max-w-2xl text-sm leading-8 text-[#718174] sm:text-base">
+      Discover the lush greenery of the Western Ghats and
+      the natural beauty of Kallaru during Tenkasi's
+      pleasant and rainy seasons.
+    </p>
+
+    <div className="mt-12 grid gap-8 md:grid-cols-3">
+
+      {/* WESTERN GHATS */}
+      <div className="season-card rounded-3xl border border-[#dce8d5] bg-white p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6f1df] text-4xl">
+          🌿
+        </div>
+
+        <span className="mt-6 inline-block rounded-full bg-[#e5f1df] px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-[#315b42]">
+          Greenery Season
+        </span>
+
+        <h3 className="mt-5 text-2xl font-bold text-[#315b42]">
+          June – September
+        </h3>
+
+        <p className="mt-4 text-sm leading-7 text-[#718174]">
+          The Southwest Monsoon brings rainfall to the Western
+          Ghats, creating lush green landscapes, misty hills
+          and refreshing natural surroundings.
+        </p>
+
+        <div className="mt-6 rounded-xl bg-[#f1f6ed] px-4 py-3 text-sm font-semibold text-[#315b42]">
+          Best for green landscapes
+        </div>
+      </div>
+
+      {/* KALLARU */}
+      <div className="season-card rounded-3xl border border-[#dce8d5] bg-white p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6f1df] text-4xl">
+          💧
+        </div>
+
+        <span className="mt-6 inline-block rounded-full bg-[#e5f1df] px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-[#315b42]">
+          Post-Monsoon Period
+        </span>
+
+        <h3 className="mt-5 text-2xl font-bold text-[#315b42]">
+          October – November
+        </h3>
+
+        <p className="mt-4 text-sm leading-7 text-[#718174]">
+          Rainfall during the Northeast Monsoon can refresh
+          the surrounding greenery and natural water sources.
+          Enjoy the landscape when local weather permits.
+        </p>
+
+        <div className="mt-6 rounded-xl bg-[#f1f6ed] px-4 py-3 text-sm font-semibold text-[#315b42]">
+          Best for post-rain nature views
+        </div>
+      </div>
+
+      {/* PLEASANT WEATHER */}
+      <div className="season-card rounded-3xl border border-[#dce8d5] bg-white p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6f1df] text-4xl">
+          ⛰️
+        </div>
+
+        <span className="mt-6 inline-block rounded-full bg-[#e5f1df] px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-[#315b42]">
+          Pleasant Weather
+        </span>
+
+        <h3 className="mt-5 text-2xl font-bold text-[#315b42]">
+          December – February
+        </h3>
+
+        <p className="mt-4 text-sm leading-7 text-[#718174]">
+          Cooler and more comfortable weather makes this
+          period suitable for exploring nature, enjoying
+          mountain views and outdoor sightseeing.
+        </p>
+
+        <div className="mt-6 rounded-xl bg-[#f1f6ed] px-4 py-3 text-sm font-semibold text-[#315b42]">
+          Best for nature exploration
+        </div>
+      </div>
+
+    </div>
+
+    <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-[#dce8d5] bg-[#eaf2e5] p-6 text-left">
+
+      <h4 className="font-bold text-[#315b42]">
+        💡 Travel Tip
+      </h4>
+
+      <p className="mt-2 text-sm leading-7 text-[#718174]">
+        Water flow at Kallaru and other natural water spots
+        depends on actual rainfall. Check local weather and
+        access conditions before travelling, especially during
+        heavy rain.
+      </p>
+
+    </div>
+
+  </div>
+</section>
       {/* IMAGE GALLERY */}
       <section className="mx-auto max-w-7xl px-6 py-24">
 

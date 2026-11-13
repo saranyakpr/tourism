@@ -12,7 +12,7 @@ const waterfalls = [
     description:
       "Experience the refreshing beauty of Courtallam Main Falls, surrounded by scenic hills and natural greenery.",
     image: "/mainfalll.jpg",
-    number: "01",
+    
   },
   {
     name: "Five Falls",
@@ -21,7 +21,7 @@ const waterfalls = [
     description:
       "Discover the unique beauty of five separate streams flowing through a beautiful natural setting.",
     image: "/fivefalls.jpg",
-    number: "02",
+    
   },
   {
     name: "Old Courtallam",
@@ -30,7 +30,7 @@ const waterfalls = [
     description:
       "Enjoy a peaceful waterfall experience with beautiful surroundings and refreshing natural scenery.",
     image: "/mainfalll1.jpg",
-    number: "03",
+  
   },
   {
     name: "Tiger Falls",
@@ -39,7 +39,7 @@ const waterfalls = [
     description:
       "Explore another beautiful waterfall destination and enjoy the charm of flowing water and greenery.",
     image: "/tiger.jpg",
-    number: "04",
+    
   },
 ];
 
@@ -268,6 +268,158 @@ export default function Chasingwaterfalls() {
           </div>
         </div>
       </section>
+
+      
+{/* BEST TIME TO VISIT */}
+<section className="relative overflow-hidden bg-[#f7f8ef] px-6 py-20 sm:px-10 lg:px-20">
+
+  <style>{`
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .season-float {
+      animation: floatCard 4s ease-in-out infinite;
+    }
+
+    .season-float:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .season-float:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .season-float { animation: none; }
+    }
+  `}</style>
+
+  {/* FLOATING DECORATIONS */}
+  <div className="pointer-events-none absolute left-10 top-16 h-16 w-16 rounded-full bg-[#dcebd4] opacity-50 blur-xl" />
+  <div className="pointer-events-none absolute right-12 top-32 h-24 w-24 rounded-full bg-[#c5dfc0] opacity-40 blur-2xl" />
+  <div className="pointer-events-none absolute bottom-10 left-1/2 h-20 w-20 rounded-full bg-[#e3eacb] opacity-50 blur-2xl" />
+
+  <div className="relative z-10 mx-auto max-w-6xl text-center">
+
+    <p className="text-xs font-extrabold uppercase tracking-[.25em] text-[#91a47f]">
+      Plan Your Visit
+    </p>
+
+    <h2 className="mt-3 text-3xl font-bold text-[#244333] sm:text-5xl">
+      Best Time to Visit
+    </h2>
+
+    <p className="mx-auto mt-5 max-w-2xl text-sm leading-8 text-[#718174] sm:text-base">
+      Experience the refreshing waterfalls of Courtallam
+      during Tenkasi's rainy seasons and pleasant weather.
+    </p>
+
+    <div className="mt-12 grid gap-8 md:grid-cols-3">
+
+      {/* PEAK WATERFALL SEASON */}
+      <div className="season-float rounded-3xl border border-[#dce8d5] bg-white/90 p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6f1df] text-4xl">
+          🌧️
+        </div>
+
+        <span className="mt-6 inline-block rounded-full bg-[#e5f1df] px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-[#315b42]">
+          Peak Season
+        </span>
+
+        <h3 className="mt-5 text-2xl font-bold text-[#315b42]">
+          Mid-June – September
+        </h3>
+
+        <p className="mt-4 text-sm leading-7 text-[#718174]">
+          Southwest Monsoon rainfall brings fresh water flow
+          to Courtallam waterfalls. This is the main tourist
+          season, attracting visitors to Main Falls and Five Falls.
+        </p>
+
+        <div className="mt-6 rounded-xl bg-[#f1f6ed] px-4 py-3 text-sm font-semibold text-[#315b42]">
+          Best for waterfall experience
+        </div>
+      </div>
+
+      {/* NORTHEAST MONSOON */}
+      <div className="season-float rounded-3xl border border-[#dce8d5] bg-white/90 p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6f1df] text-4xl">
+          💧
+        </div>
+
+        <span className="mt-6 inline-block rounded-full bg-[#e5f1df] px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-[#315b42]">
+          Rainy Season
+        </span>
+
+        <h3 className="mt-5 text-2xl font-bold text-[#315b42]">
+          October – November
+        </h3>
+
+        <p className="mt-4 text-sm leading-7 text-[#718174]">
+          Northeast Monsoon rainfall can refresh the hills
+          and surrounding landscapes. Water flow may improve
+          depending on the rainfall received.
+        </p>
+
+        <div className="mt-6 rounded-xl bg-[#f1f6ed] px-4 py-3 text-sm font-semibold text-[#315b42]">
+          Best for green surroundings
+        </div>
+      </div>
+
+      {/* COOLER VISITING PERIOD */}
+      <div className="season-float rounded-3xl border border-[#dce8d5] bg-white/90 p-8 shadow-lg transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6f1df] text-4xl">
+          🌿
+        </div>
+
+        <span className="mt-6 inline-block rounded-full bg-[#e5f1df] px-4 py-2 text-[10px] font-extrabold uppercase tracking-wider text-[#315b42]">
+          Pleasant Period
+        </span>
+
+        <h3 className="mt-5 text-2xl font-bold text-[#315b42]">
+          December – January
+        </h3>
+
+        <p className="mt-4 text-sm leading-7 text-[#718174]">
+          Cooler weather makes this period suitable for
+          sightseeing and exploring Courtallam's natural
+          surroundings. Water flow depends on recent rainfall.
+        </p>
+
+        <div className="mt-6 rounded-xl bg-[#f1f6ed] px-4 py-3 text-sm font-semibold text-[#315b42]">
+          Best for peaceful sightseeing
+        </div>
+      </div>
+
+    </div>
+
+    {/* TRAVEL TIP */}
+    <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-[#dce8d5] bg-[#eaf2e5] p-6 text-left">
+
+      <h4 className="font-bold text-[#315b42]">
+        💡 Travel Tip
+      </h4>
+
+      <p className="mt-2 text-sm leading-7 text-[#718174]">
+        Waterfalls may be closed for bathing during heavy rainfall
+        or unsafe water flow. Always check local weather and
+        official announcements before planning your visit.
+      </p>
+
+    </div>
+
+    <p className="mt-6 text-xs text-[#91a47f]">
+      Seasonal guide for Courtallam, Tenkasi
+    </p>
+
+  </div>
+</section>
+
 
       {/* IMAGE GALLERY */}
       <section className="mx-auto max-w-7xl px-6 py-24">

@@ -13,7 +13,7 @@ const hiddenPlaces = [
       "Popular temple-side shopping area.",
     image:
       "shop1.jpg",
-    number: "01",
+    
   },
   {
     name: "Municipal Market",
@@ -23,7 +23,7 @@ const hiddenPlaces = [
       "Vegetables, fruits, groceries and local market shopping.",
     image:
       "shop3.jpg",
-    number: "02",
+    
   },
   {
     name: "Amman Sannathi Bazaar",
@@ -33,7 +33,7 @@ const hiddenPlaces = [
       "Textiles, jewellery and traditional shops.",
     image:
       "shop2.jpg",
-    number: "03",
+  
   },
   {
     name: "Swami Sannathi Bazaar",
@@ -43,7 +43,7 @@ const hiddenPlaces = [
       "Traditional shopping street near Kasi Viswanathar Temple. Clothes, flowers and everyday shopping.",
     image:
       "shop4.jpg",
-    number: "04",
+  
   },
 ];
 
@@ -131,7 +131,7 @@ export default function Shopping() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#12271c]/90 via-[#12271c]/10 to-transparent" />
 
               <div className="absolute left-6 top-6 rounded-full bg-white/90 px-4 py-2 text-[10px] font-bold tracking-widest text-[#456448]">
-                {place.tag}
+                {place.category}
               </div>
 
               <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-9">
@@ -143,9 +143,7 @@ export default function Shopping() {
                   {place.description}
                 </p>
                 <div className="mt-6 flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-[3px] text-white/60">
-                    DISCOVER 0{index + 1}
-                  </span>
+                  
                   <span className="text-2xl transition duration-300 group-hover:translate-x-2">
                     →
                   </span>
@@ -155,6 +153,185 @@ export default function Shopping() {
           ))}
         </div>
       </section>
+
+{/* BEST TIME TO VISIT */}
+<section className="relative overflow-hidden bg-[#f6f8ef] px-6 py-24">
+
+  <style>{`
+    @keyframes shoppingFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .shopping-season-card {
+      animation: shoppingFloat 5s ease-in-out infinite;
+    }
+
+    .shopping-season-card:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .shopping-season-card:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shopping-season-card {
+        animation: none;
+      }
+    }
+  `}</style>
+
+  {/* Background Decorations */}
+  <div className="absolute -left-24 top-10 h-64 w-64 rounded-full bg-[#dce9c5]/40 blur-3xl" />
+  <div className="absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-[#dce9c5]/40 blur-3xl" />
+
+  <div className="relative z-10 mx-auto max-w-7xl">
+
+    {/* Heading */}
+    <div className="mb-16 text-center">
+
+      <p className="text-sm font-bold uppercase tracking-[4px] text-[#78966b]">
+        Plan Your Shopping Trip
+      </p>
+
+      <h2 className="mt-4 text-4xl font-bold text-[#294333] md:text-5xl">
+        Best Time for Shopping
+      </h2>
+
+      <p className="mx-auto mt-5 max-w-2xl leading-8 text-[#718071]">
+        Explore Tenkasi's traditional bazaars, local markets
+        and shopping streets throughout the year. Choose
+        a comfortable time to enjoy the local shopping experience.
+      </p>
+
+    </div>
+
+    {/* Season Cards */}
+    <div className="grid gap-8 md:grid-cols-3">
+
+      {/* CARD 1 */}
+      <article className="shopping-season-card rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          🌿
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#78966b]">
+          December – February
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Pleasant Shopping
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          Relatively comfortable weather makes this a good
+          period to explore local shopping streets, browse
+          traditional stores and enjoy market visits.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Relaxed shopping and street exploration
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 2 */}
+      <article className="shopping-season-card rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          ☀️
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#78966b]">
+          March – May
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Early Morning Finds
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          These months can be warmer in Tenkasi.
+          Visit markets early in the morning or later
+          in the evening to enjoy shopping more comfortably.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Morning market visits and fresh produce shopping
+          </p>
+        </div>
+
+      </article>
+
+      {/* CARD 3 */}
+      <article className="shopping-season-card rounded-[28px] border border-[#dce6d2] bg-white p-8 shadow-lg transition duration-500 hover:-translate-y-3 hover:shadow-2xl">
+
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#e6efdc] text-3xl">
+          🛍️
+        </div>
+
+        <p className="mt-7 text-xs font-bold uppercase tracking-[3px] text-[#78966b]">
+          June – November
+        </p>
+
+        <h3 className="mt-3 text-2xl font-bold text-[#294333]">
+          Seasonal Shopping
+        </h3>
+
+        <p className="mt-4 leading-8 text-[#788477]">
+          This period can bring rainy days to Tenkasi.
+          Plan your market visits around the weather.
+          Festival shopping opportunities also depend
+          on the annual festival calendar.
+        </p>
+
+        <div className="mt-7 rounded-xl bg-[#f0f4e9] p-4">
+          <p className="text-sm font-bold text-[#45664a]">
+            Best for
+          </p>
+          <p className="mt-1 text-sm text-[#788477]">
+            Festival shopping and traditional purchases
+          </p>
+        </div>
+
+      </article>
+
+    </div>
+
+    {/* Shopping Tip */}
+    <div className="mt-12 rounded-2xl border border-[#dce6d2] bg-[#edf2e5] px-6 py-6 text-center">
+
+      <p className="font-bold text-[#315b42]">
+        ✦ Shopping Tip
+      </p>
+
+      <p className="mx-auto mt-2 max-w-3xl text-sm leading-7 text-[#788477]">
+        Tenkasi's local markets and shopping streets operate
+        throughout the year. Morning and evening visits can
+        be more comfortable. Check individual shop timings
+        and weekly market days before travelling.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
 
       {/* CTA */}
       {/* CTA */}
